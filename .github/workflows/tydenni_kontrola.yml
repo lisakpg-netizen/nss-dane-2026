@@ -1,0 +1,36 @@
+name: Tydenni stahovani rozhodnuti NSS Afs (2026)
+
+on:
+  schedule:
+    # Běží automaticky každé pondělí v 6:00 ráno (UTC)
+    - cron: '0 6 * * 1'
+  # Umožňuje spustit proces kdykoliv ručně jedním kliknutím
+  workflow_dispatch:
+
+jobs:
+  scrape-and-save:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Načtení repozitáře
+        uses: actions/checkout@v4
+
+      - name: Příprava Pythonu
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalace potřebných knihoven
+        run: pip install httpx beautifulsoup4 markdownify
+
+      - name: Spuštění stahovače
+        run: python scraper_2026.py
+
+      - name: Uložení nových rozhodnutí zpět do repozitáře
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "NSS Automat"
+          git add judikatura/
+          git diff --staged --quiet || (git commit -m "Auto: Přidána nová rozhodnutí NSS Afs 2026" && git push)
