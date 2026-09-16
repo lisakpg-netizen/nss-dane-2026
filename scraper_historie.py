@@ -2,12 +2,13 @@ import sys
 import os
 import re
 import time
+import calendar
 from urllib.parse import urljoin
 import httpx
 from bs4 import BeautifulSoup
 from markdownify import markdownify as md
 
-TARGET_YEAR = sys.argv[1] if len(sys.argv) > 1 else "2025"
+TARGET_YEAR = int(sys.argv[1]) if len(sys.argv) > 1 else 2025
 BASE_URL = "https://vyhledavac.nssoud.cz"
 OUTPUT_DIR = f"judikatura/Afs/{TARGET_YEAR}"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -83,132 +84,113 @@ zdroj_url: "{doc_url}"
 """
     return yaml_header + md_body.strip(), spzn, datum
 
-def inspect_js_handler(client: httpx.Client, soup: BeautifulSoup):
-    """Najde v externích skriptech přesný kód volající MyResTRowsCont a vypíše ho."""
-    print("--- Analýza volání /Home/MyResTRowsCont z JavaScriptu ---")
-    for s in soup.find_all("script", src=True):
-        src_url = urljoin(BASE_URL, s["src"])
-        try:
-            js_res = client.get(src_url)
-            if "MyResTRowsCont" in js_res.text:
-                idx = js_res.text.find("MyResTRowsCont")
-                snippet = js_res.text[max(0, idx - 200): min(len(js_res.text), idx + 250)]
-                print(f"Zdroj: {s['src']}")
-                print(f"Kód obsluhy:\n{snippet}\n")
-                return snippet
-        except Exception:
-            continue
-    return ""
+def generate_date_slices(year: int):
+    """Rozdělí rok na 36 desetidenních úseků, aby výsledky nepřekročily limit 40 na stránku."""
+    slices = []
+    for month in range(1, 13):
+        last_day = calendar.monthrange(year, month)[1]
+        slices.append((f"01.{month:02d}.{year}", f"10.{month:02d}.{year}"))
+        slices.append((f"11.{month:02d}.{year}", f"20.{month:02d}.{year}"))
+        slices.append((f"21.{month:02d}.{year}", f"{last_day:02d}.{month:02d}.{year}"))
+    return slices
 
 def run():
-    print(f"=== Zahajuji kompletní sběr rozhodnutí pro rok {TARGET_YEAR} ===")
+    print(f"=== Zahajuji archivaci daňové judikatury (Afs) pro rok {TARGET_YEAR} ===")
+    
     with httpx.Client(headers=HEADERS, timeout=40.0, follow_redirects=True) as client:
         init_res = client.get(BASE_URL)
         soup = BeautifulSoup(decode_html_safely(init_res), "html.parser")
         form = soup.find("form")
         if not form:
-            print("Formulář nebyl nalezen.")
+            print("Chyba: Formulář NSS nebyl nalezen.")
             return
 
-        inspect_js_handler(client, soup)
-
-        form_data = {inp.get("name"): inp.get("value", "") for inp in form.find_all("input") if inp.get("name")}
+        base_form = {inp.get("name"): inp.get("value", "") for inp in form.find_all("input") if inp.get("name")}
         for sel in form.find_all("select"):
             if sel.get("name"):
                 opt = sel.find("option", selected=True)
-                form_data[sel["name"]] = opt.get("value", "") if opt else ""
+                base_form[sel["name"]] = opt.get("value", "") if opt else ""
 
-        for k in list(form_data.keys()):
+        # Aktivace filtru pro rejstřík Afs
+        for k in list(base_form.keys()):
             if "vyhledavaciSekce[0].vyhledavaciPodminka[1]" in k:
-                if k.endswith(".Visible"): form_data[k] = "True"
-                elif k.endswith(".HodnotaText"): form_data[k] = "Afs"
-            if "vyhledavaciSekce[1].vyhledavaciPodminka[0]" in k:
-                if k.endswith(".Visible"): form_data[k] = "True"
-                elif k.endswith(".HodnotaDatumACasOd"): form_data[k] = f"01.01.{TARGET_YEAR}"
-                elif k.endswith(".HodnotaDatumACasDo"): form_data[k] = f"31.12.{TARGET_YEAR}"
+                if k.endswith(".Visible"): base_form[k] = "True"
+                elif k.endswith(".HodnotaText"): base_form[k] = "Afs"
 
-        print("1. Odesílám úvodní vyhledávací formulář...")
-        res = client.post(BASE_URL, data=form_data)
-        current_html = decode_html_safely(res)
-        res_soup = BeautifulSoup(current_html, "html.parser")
-
-        # Seznam všech nalezených rozhodnutí: (link_tag, doc_url, doc_id)
         all_collected_docs = []
         seen_doc_ids = set()
 
-        def extract_links_from_soup(s_obj):
-            new_found = 0
-            for link in s_obj.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/|DokumentOriginal/Podrobnosti/")):
-                href = link.get("href", "")
-                if "Podrobnosti" in href:
-                    href = href.replace("Podrobnosti", "Text")
-                doc_id = href.rstrip("/").split("/")[-1]
-                if doc_id not in seen_doc_ids:
-                    seen_doc_ids.add(doc_id)
-                    all_collected_docs.append((link, urljoin(BASE_URL, href), doc_id))
-                    new_found += 1
-            return new_found
+        date_slices = generate_date_slices(TARGET_YEAR)
+        print(f"1. FÁZE: Procházím rok {TARGET_YEAR} ve {len(date_slices)} časových úsecích...")
 
-        initial_count = extract_links_from_soup(res_soup)
-        print(f"Úvodní dávka: načteno prvních {initial_count} rozhodnutí.")
+        for idx, (d_from, d_to) in enumerate(date_slices, 1):
+            current_form = base_form.copy()
+            for k in list(current_form.keys()):
+                if "vyhledavaciSekce[1].vyhledavaciPodminka[0]" in k:
+                    if k.endswith(".Visible"): current_form[k] = "True"
+                    elif k.endswith(".HodnotaDatumACasOd"): current_form[k] = d_from
+                    elif k.endswith(".HodnotaDatumACasDo"): current_form[k] = d_to
 
-        # 2. Načítání dalších dávek přes /Home/MyResTRowsCont
-        cont_url = f"{BASE_URL}/Home/MyResTRowsCont"
-        batch = 1
-        headers_ajax = HEADERS.copy()
-        headers_ajax["X-Requested-With"] = "XMLHttpRequest"
+            try:
+                res = client.post(BASE_URL, data=current_form)
+                res_soup = BeautifulSoup(decode_html_safely(res), "html.parser")
+                links = res_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/|DokumentOriginal/Podrobnosti/"))
 
-        while True:
-            batch += 1
-            current_total = len(seen_doc_ids)
-            print(f"Volám dávku č. {batch} přes {cont_url} (aktuálně v seznamu: {current_total} rozhodnutí)...")
+                slice_new = 0
+                for link in links:
+                    href = link.get("href", "")
+                    if "Podrobnosti" in href:
+                        href = href.replace("Podrobnosti", "Text")
+                    doc_id = href.rstrip("/").split("/")[-1]
+                    if doc_id not in seen_doc_ids:
+                        seen_doc_ids.add(doc_id)
+                        all_collected_docs.append((link, urljoin(BASE_URL, href), doc_id))
+                        slice_new += 1
 
-            # Zkoušíme POST i GET variantu
-            chunk_res = client.post(cont_url, data={"from": current_total, "count": 40}, headers=headers_ajax)
-            if chunk_res.status_code != 200 or not chunk_res.text.strip():
-                chunk_res = client.get(cont_url, params={"from": current_total, "count": 40}, headers=headers_ajax)
+                print(f"[{idx}/36] {d_from} - {d_to}: nalezeno {slice_new} rozhodnutí (průběžně celkem: {len(seen_doc_ids)})")
+                time.sleep(0.3)
+            except Exception as e:
+                print(f"Chyba u intervalu {d_from}-{d_to}: {e}")
 
-            if chunk_res.status_code != 200:
-                print(f"Endpoint vrátil HTTP {chunk_res.status_code}. Další data nejsou k dispozici.")
-                break
+        total_docs = len(all_collected_docs)
+        print(f"\n2. FÁZE: Celkem indexováno {total_docs} rozhodnutí. Zahajuji stahování plných textů...")
 
-            chunk_html = decode_html_safely(chunk_res)
-            chunk_soup = BeautifulSoup(chunk_html, "html.parser")
-            new_in_batch = extract_links_from_soup(chunk_soup)
-
-            print(f"-> Dávka č. {batch} přidala {new_in_batch} nových rozhodnutí.")
-
-            if new_in_batch == 0:
-                print("Dosažen konec seznamu (žádné další záznamy).")
-                break
-
-            time.sleep(0.5)
-
-        print(f"\n=== Celkem nalezeno {len(all_collected_docs)} rozhodnutí pro rok {TARGET_YEAR} ===")
-
-        # 3. Stažení samotných souborů do Markdownu
         saved = 0
+        skipped = 0
+
         for i, (link_tag, doc_url, doc_id) in enumerate(all_collected_docs, 1):
             try:
+                # Nejprve zjistíme spzn z odkazu/řádku pro kontrolu existence souboru před stahováním
+                row = link_tag.find_parent("tr") if link_tag else None
+                spzn_guess = ""
+                if row:
+                    m = re.search(r'\b(\d{1,2}\s*Afs\s*\d{1,4}/\d{4}(?:\s*-\s*\d+)?)\b', row.get_text(separator=" ", strip=True), re.I)
+                    if m: spzn_guess = m.group(1)
+
+                potential_filename = sanitize_filename(spzn_guess, doc_id)
+                potential_filepath = os.path.join(OUTPUT_DIR, potential_filename)
+
+                if os.path.exists(potential_filepath):
+                    skipped += 1
+                    continue
+
                 doc_res = client.get(doc_url)
                 if doc_res.status_code == 200:
                     md_text, spzn, datum = extract_content(decode_html_safely(doc_res), link_tag, doc_url, doc_id)
                     filename = sanitize_filename(spzn, doc_id)
                     filepath = os.path.join(OUTPUT_DIR, filename)
 
-                    if not os.path.exists(filepath):
-                        with open(filepath, "w", encoding="utf-8") as f:
-                            f.write(md_text)
-                        saved += 1
-                        if saved % 25 == 0 or saved == 1:
-                            print(f"[{i}/{len(all_collected_docs)}] Uloženo: {filename} ({datum})")
-                    else:
-                        pass
-                time.sleep(0.4)
+                    with open(filepath, "w", encoding="utf-8") as f:
+                        f.write(md_text)
+                    saved += 1
+                    if saved % 20 == 0 or saved == 1:
+                        print(f"[{i}/{total_docs}] Uloženo: {filename} ({datum})")
+                time.sleep(0.35)
             except Exception as e:
-                print(f"Chyba u {doc_url}: {e}")
+                print(f"Chyba při stahování {doc_url}: {e}")
 
-        print(f"\n=== Hotovo! Úspěšně archivováno {saved} nových souborů pro rok {TARGET_YEAR}. ===")
+        print(f"\n=== Hotovo pro rok {TARGET_YEAR}! ===")
+        print(f"Nově uloženo: {saved} souborů | Dříve staženo (přeskočeno): {skipped} souborů | Celkem v archivu: {saved + skipped}/{total_docs}")
 
 if __name__ == "__main__":
     run()
