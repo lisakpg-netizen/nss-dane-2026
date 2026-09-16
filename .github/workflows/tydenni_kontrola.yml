@@ -10,24 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
-      - name: Nacist repozitar
-        uses: actions/checkout@v4
-
-      - name: Pripravit Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Nainstalovat knihovny
-        run: pip install httpx beautifulsoup4 markdownify
-
-      - name: Spustit scraper
-        run: python scraper_2026.py
-
-      - name: Ulozit zmeny do gitu
-        run: |
+      - run: pip install httpx beautifulsoup4 markdownify
+      - run: python scraper_2026.py
+      - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "NSS Automat"
           git add judikatura/
