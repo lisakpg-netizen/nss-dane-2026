@@ -1,7 +1,6 @@
 import os
 import re
 import time
-from urllib.parse import urljoin
 import httpx
 from bs4 import BeautifulSoup
 from markdownify import markdownify as md
@@ -14,6 +13,7 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "cs-CZ,cs;q=0.9",
+    "Referer": "https://vyhledavac.nssoud.cz/",
 }
 
 def sanitize_filename(spzn: str) -> str:
@@ -33,7 +33,7 @@ def extract_content(html: str, doc_url: str):
     datum = get_val("lblDatumRozhodnuti")
     forma = get_val("lblFormaRozhodnuti")
 
-    content_div = soup.find("div", id="divTextRozhodnuti") or soup.find("div", class_="rozhodnuti-fulltext")
+    content_div = soup.find("div", id="divTextRozhodnuti") or soup.find("div", class_="rozhodnuti-fulltext") or soup.find("div", class_="panel-body")
     body_html = str(content_div) if content_div else str(soup.body)
     markdown_text = md(body_html, heading_style="ATX", strip=['script', 'style'])
 
@@ -51,73 +51,64 @@ zdroj_url: "{doc_url}"
     return yaml_frontmatter + markdown_text.strip(), spzn
 
 def run():
-    print("--- 1. Načítám hlavní stránku vyhledávače NSS ---")
+    print("--- 1. Získání session a tokenu z vyhledávače NSS ---")
     with httpx.Client(headers=HEADERS, timeout=30.0, follow_redirects=True) as client:
-        res = client.get(BASE_URL)
-        if res.status_code != 200:
-            print(f"Nelze načíst NSS, stav: {res.status_code}")
+        init_res = client.get(BASE_URL)
+        if init_res.status_code != 200:
+            print(f"Chyba připojení: HTTP {init_res.status_code}")
             return
 
-        soup = BeautifulSoup(res.text, "html.parser")
-        form = soup.find("form")
-        if not form:
-            print("Formulář nebyl nalezen.")
+        soup = BeautifulSoup(init_res.text, "html.parser")
+        token_input = soup.find("input", {"name": "__RequestVerificationToken"})
+        token = token_input.get("value") if token_input else ""
+        print(f"Token získán: {'ANO' if token else 'NE'}")
+
+        # Nastavení hledání: Označení věci (spisová značka obsahuje 'Afs' a rok '2026')
+        # Alternativní přímý GET dotaz podporovaný rozhraním vyhledávače
+        direct_search_url = f"{BASE_URL}/Home/Vysledky"
+        
+        # Testujeme přímé volání podstránky s výsledky
+        print("--- 2. Dotazování na seznam rozhodnutí ---")
+        
+        # Sestavení parametrů vyhledávání pro Afs v roce 2026
+        search_params = {
+            "spisovaZnacka": "Afs",
+            "rok": "2026",
+            "__RequestVerificationToken": token
+        }
+        
+        # Pokus o vyhledání přes standardní rozhraní výsledků
+        res = client.post(direct_search_url, data=search_params)
+        print(f"Odpověď vyhledávání (Home/Vysledky): HTTP {res.status_code}")
+        
+        # Pokud toto URL nevrátí výsledky, zkusíme výchozí vyhledávací filtr s aktivovanou podmínkou
+        doc_links = []
+        if res.status_code == 200:
+            res_soup = BeautifulSoup(res.text, "html.parser")
+            doc_links = res_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/\d+"))
+
+        # Záložní varianta: Prohledání přímého fulltextového dotazu
+        if not doc_links:
+            print("Zkouším univerzální vyhledávací dotaz...")
+            fallback_url = f"{BASE_URL}/?dotaz=Afs%202026"
+            res2 = client.get(fallback_url)
+            if res2.status_code == 200:
+                res2_soup = BeautifulSoup(res2.text, "html.parser")
+                doc_links = res2_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/\d+"))
+                print(f"Nalezeno {len(doc_links)} odkazů přes dotaz 'Afs 2026'.")
+
+        if not doc_links:
+            print("Automat nenašel žádné přímé odkazy na dokumenty. Vypisuji dostupné formulářové akce z webu:")
+            for form in soup.find_all("form"):
+                print(f"Formulář action: {form.get('action')}, method: {form.get('method')}")
             return
 
-        # Sestavíme URL, kam se formulář posílá
-        action_url = urljoin(BASE_URL, form.get("action", ""))
-        method = form.get("method", "post").lower()
-        print(f"Formulář nalezen. Cíl: {action_url} (metoda: {method.upper()})")
-
-        # 2. Posbíráme všechna pole formuláře (včetně skrytých ViewState/CSRF tokenů)
-        form_data = {}
-        for inp in form.find_all("input"):
-            name = inp.get("name")
-            if name:
-                form_data[name] = inp.get("value", "")
-
-        for sel in form.find_all("select"):
-            name = sel.get("name")
-            if name:
-                selected = sel.find("option", selected=True)
-                form_data[name] = selected.get("value", "") if selected else ""
-
-        print(f"Nalezená pole formuláře: {list(form_data.keys())}")
-
-        # 3. Nastavíme parametry pro daňový senát Afs a rok 2026
-        # Skript prohledá názvy polí a dosadí hodnoty
-        for key in list(form_data.keys()):
-            k_low = key.lower()
-            if "rejstrik" in k_low or "senat" in k_low:
-                form_data[key] = "Afs"
-            elif "rok" in k_low:
-                form_data[key] = "2026"
-
-        print("--- 2. Odesílám vyhledávací dotaz (Afs 2026) ---")
-        if method == "post":
-            search_res = client.post(action_url, data=form_data)
-        else:
-            search_res = client.get(action_url, params=form_data)
-
-        print(f"Výsledek hledání HTTP: {search_res.status_code}")
-        search_soup = BeautifulSoup(search_res.text, "html.parser")
-
-        # Hledáme odkazy na texty rozhodnutí
-        links = search_soup.find_all("a", href=re.compile(r"/DokumentOriginal/Text/|/Text/"))
-        print(f"Nalezeno {len(links)} rozhodnutí.")
-
-        if not links:
-            # Pro kontrolu vypíšeme text, který stránka vrátila
-            text_snippet = search_soup.get_text(separator=" ", strip=True)[:400]
-            print(f"Ukázka textu z odpovědi: {text_snippet}")
-            return
-
-        # 3. Stažení nalezených rozhodnutí
-        print(f"--- 3. Zahajuji stahování {len(links)} souborů ---")
+        print(f"--- 3. Stahování {len(doc_links)} nalezených rozhodnutí ---")
         saved_count = 0
-        for link in links:
-            href = link["href"]
-            doc_url = urljoin(BASE_URL, href)
+        for link in doc_links:
+            href = link.get("href", "")
+            doc_url = f"{BASE_URL}{href}" if href.startswith("/") else f"{BASE_URL}/{href}"
+            
             try:
                 doc_res = client.get(doc_url)
                 if doc_res.status_code == 200:
@@ -134,9 +125,9 @@ def run():
                         print(f"Již existuje: {filename}")
                 time.sleep(1.0)
             except Exception as e:
-                print(f"Chyba u {doc_url}: {e}")
+                print(f"Chyba při stahování {doc_url}: {e}")
 
-        print(f"Dokončeno. Nově uloženo {saved_count} rozhodnutí.")
+        print(f"Dokončeno. Celkem nově uloženo: {saved_count}")
 
 if __name__ == "__main__":
     run()
