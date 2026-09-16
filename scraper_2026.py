@@ -23,6 +23,28 @@ def sanitize_filename(spzn: str) -> str:
     clean = re.sub(r"\s+", "_", clean.strip())
     return f"NSS_{clean}.md"
 
+def decode_html_safely(response: httpx.Response) -> str:
+    """Bezpečně dekóduje odpověď serveru NSS i při chybějícím BOM u UTF-16."""
+    raw = response.content
+    if not raw:
+        return ""
+    
+    # Detekce UTF-16LE bez BOM (každý druhý bajt v ASCII HTML je nulový)
+    if len(raw) > 3 and raw[1] == 0 and raw[3] == 0:
+        try:
+            return raw.decode("utf-16-le", errors="replace")
+        except Exception:
+            pass
+
+    # Standardní pokusy o dekódování
+    for enc in ["utf-8", "windows-1250", "utf-16", "iso-8859-2"]:
+        try:
+            return raw.decode(enc)
+        except (UnicodeDecodeError, LookupError):
+            continue
+
+    return raw.decode("utf-8", errors="replace")
+
 def extract_content(html: str, doc_url: str):
     soup = BeautifulSoup(html, "html.parser")
     
@@ -50,7 +72,7 @@ zdroj_url: "{doc_url}"
 ---
 
 """
-    return yaml_frontmatter + markdown_text.strip(), spzn
+    return yaml_frontmatter + markdown_text.strip(), spzn, datum
 
 def run():
     print("--- 1. Načítám vyhledávací formulář NSS ---")
@@ -60,13 +82,13 @@ def run():
             print(f"Chyba spojení s NSS: HTTP {res.status_code}")
             return
 
-        soup = BeautifulSoup(res.text, "html.parser")
+        html_home = decode_html_safely(res)
+        soup = BeautifulSoup(html_home, "html.parser")
         form = soup.find("form")
         if not form:
-            print("Formulář nebyl na stránce nalezen.")
+            print("Formulář nebyl nalezen.")
             return
 
-        # Posbíráme všechna stávající pole a tokeny
         form_data = {}
         for inp in form.find_all("input"):
             name = inp.get("name")
@@ -79,15 +101,13 @@ def run():
                 selected = sel.find("option", selected=True)
                 form_data[name] = selected.get("value", "") if selected else ""
 
-        # Přidáme i tlačítka typu submit
         for btn in form.find_all(["button", "input"]):
             if btn.get("type") == "submit" and btn.get("name"):
                 form_data[btn["name"]] = btn.get("value", "")
 
-        # 2. Nastavíme vyhledávací podmínku pro spisovou značku Afs
+        # Aktivace podmínky pro rejstřík Afs
         print("Nastavuji filtr pro daňový senát Afs...")
         for key in list(form_data.keys()):
-            # Aktivace pole "Označení věci v celku" (sekce 0, podmínka 1)
             if "vyhledavaciSekce[0].vyhledavaciPodminka[1]" in key:
                 if key.endswith(".Visible"):
                     form_data[key] = "True"
@@ -98,40 +118,34 @@ def run():
         post_res = client.post(BASE_URL, data=form_data)
         print(f"Odpověď vyhledávače: HTTP {post_res.status_code}")
 
-        res_soup = BeautifulSoup(post_res.text, "html.parser")
+        html_search = decode_html_safely(post_res)
+        res_soup = BeautifulSoup(html_search, "html.parser")
 
-        # Hledáme všechny odkazy na detail nebo text rozhodnutí
         links = res_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/|DokumentOriginal/Podrobnosti/"))
         print(f"Celkem nalezeno {len(links)} odkazů na rozhodnutí.")
 
         if not links:
-            # Kontrolní výpis v případě, že se struktura ještě liší
-            tables = res_soup.find_all("table")
-            print(f"Počet nalezených tabulek s výsledky: {len(tables)}")
-            text_peek = res_soup.get_text(separator=" ", strip=True)[:300]
-            print(f"Ukázka textu stránky: {text_peek}")
             return
 
-        # 3. Stažení a uložení rozhodnutí pro rok 2026
         print("--- 3. Zpracovávám rozhodnutí pro rok 2026 ---")
         saved = 0
         for link in links:
             href = link.get("href", "")
-            # Pokud odkaz vede na podrobnosti, převedeme ho na plný text
             if "Podrobnosti" in href:
                 href = href.replace("Podrobnosti", "Text")
 
             doc_url = urljoin(BASE_URL, href)
-            link_text = link.get_text(strip=True)
 
             try:
                 doc_res = client.get(doc_url)
                 if doc_res.status_code == 200:
-                    md_text, spzn = extract_content(doc_res.text, doc_url)
+                    html_doc = decode_html_safely(doc_res)
+                    md_text, spzn, datum = extract_content(html_doc, doc_url)
 
-                    # Filtrujeme pouze ročník 2026 (buď ve spisové značce, nebo v textu odkazu)
-                    if "2026" not in spzn and "2026" not in link_text and "2026" not in md_text[:500]:
-                        print(f"Přeskakuji starší rozhodnutí: {spzn}")
+                    # Zahrnujeme rozhodnutí týkající se roku 2026 (vydaná v 2026 nebo se značkou z 2026)
+                    is_2026 = "2026" in datum or "2026" in spzn
+                    if not is_2026:
+                        print(f"Přeskakuji starší rozhodnutí: {spzn} (datum: {datum})")
                         continue
 
                     filename = sanitize_filename(spzn)
@@ -140,11 +154,11 @@ def run():
                     if not os.path.exists(filepath):
                         with open(filepath, "w", encoding="utf-8") as f:
                             f.write(md_text)
-                        print(f"Uloženo: {filename}")
+                        print(f"✅ Uloženo: {filename} ({datum})")
                         saved += 1
                     else:
-                        print(f"Již existuje: {filename}")
-                time.sleep(1.0)
+                        print(f"Už existuje: {filename}")
+                time.sleep(0.8)
             except Exception as e:
                 print(f"Chyba při stahování {doc_url}: {e}")
 
