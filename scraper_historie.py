@@ -84,62 +84,89 @@ zdroj_url: "{doc_url}"
     return yaml_header + md_body.strip(), spzn, datum
 
 def run():
-    print(f"=== Zahajuji stahování daňových rozhodnutí (Afs) pro rok {TARGET_YEAR} ===")
+    print(f"=== Zahajuji kompletní stahování Afs pro rok {TARGET_YEAR} (včetně všech stran) ===")
     with httpx.Client(headers=HEADERS, timeout=40.0, follow_redirects=True) as client:
+        # 1. Získání základních polí formuláře
         init_res = client.get(BASE_URL)
         soup = BeautifulSoup(decode_html_safely(init_res), "html.parser")
         form = soup.find("form")
         if not form:
+            print("Formulář nebyl nalezen.")
             return
 
-        form_data = {inp.get("name"): inp.get("value", "") for inp in form.find_all("input") if inp.get("name")}
+        base_form = {inp.get("name"): inp.get("value", "") for inp in form.find_all("input") if inp.get("name")}
         for sel in form.find_all("select"):
             if sel.get("name"):
                 opt = sel.find("option", selected=True)
-                form_data[sel["name"]] = opt.get("value", "") if opt else ""
+                base_form[sel["name"]] = opt.get("value", "") if opt else ""
 
-        # Filtr 1: Označení věci = Afs
-        for k in list(form_data.keys()):
+        # Nastavení filtrů pro daný rok a rejstřík
+        for k in list(base_form.keys()):
             if "vyhledavaciSekce[0].vyhledavaciPodminka[1]" in k:
-                if k.endswith(".Visible"): form_data[k] = "True"
-                elif k.endswith(".HodnotaText"): form_data[k] = "Afs"
-
-        # Filtr 2: Časové rozmezí (1. 1. až 31. 12. cílového roku)
-        for k in list(form_data.keys()):
+                if k.endswith(".Visible"): base_form[k] = "True"
+                elif k.endswith(".HodnotaText"): base_form[k] = "Afs"
             if "vyhledavaciSekce[1].vyhledavaciPodminka[0]" in k:
-                if k.endswith(".Visible"): form_data[k] = "True"
-                elif k.endswith(".HodnotaDatumACasOd"): form_data[k] = f"01.01.{TARGET_YEAR}"
-                elif k.endswith(".HodnotaDatumACasDo"): form_data[k] = f"31.12.{TARGET_YEAR}"
+                if k.endswith(".Visible"): base_form[k] = "True"
+                elif k.endswith(".HodnotaDatumACasOd"): base_form[k] = f"01.01.{TARGET_YEAR}"
+                elif k.endswith(".HodnotaDatumACasDo"): base_form[k] = f"31.12.{TARGET_YEAR}"
 
-        res = client.post(BASE_URL, data=form_data)
-        res_soup = BeautifulSoup(decode_html_safely(res), "html.parser")
-        links = res_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/|DokumentOriginal/Podrobnosti/"))
-        print(f"Na první straně nalezeno {len(links)} rozhodnutí.")
+        page = 1
+        total_saved = 0
+        seen_doc_ids = set()
 
-        saved = 0
-        for link in links:
-            href = link.get("href", "")
-            if "Podrobnosti" in href: href = href.replace("Podrobnosti", "Text")
-            doc_url = urljoin(BASE_URL, href)
-            doc_id = href.rstrip("/").split("/")[-1]
+        while True:
+            print(f"\n--- Načítám stránku {page} ---")
+            current_form = base_form.copy()
+            current_form["Strana"] = str(page)
+            current_form["Page"] = str(page)
 
-            try:
-                doc_res = client.get(doc_url)
-                if doc_res.status_code == 200:
-                    md_text, spzn, datum = extract_content(decode_html_safely(doc_res), link, doc_url, doc_id)
-                    filename = sanitize_filename(spzn, doc_id)
-                    filepath = os.path.join(OUTPUT_DIR, filename)
+            # Odeslání dotazu pro konkrétní stranu
+            paged_url = f"{BASE_URL}/Home/Index?page={page}"
+            res = client.post(paged_url, data=current_form)
+            res_soup = BeautifulSoup(decode_html_safely(res), "html.parser")
 
-                    if not os.path.exists(filepath):
-                        with open(filepath, "w", encoding="utf-8") as f:
-                            f.write(md_text)
-                        saved += 1
-                        print(f"Uloženo: {filename}")
-                time.sleep(0.8)
-            except Exception as e:
-                print(f"Chyba {doc_url}: {e}")
+            links = res_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/|DokumentOriginal/Podrobnosti/"))
+            
+            # Filtrujeme pouze unikátní ID z aktuální stránky
+            page_docs = []
+            for link in links:
+                href = link.get("href", "")
+                if "Podrobnosti" in href: href = href.replace("Podrobnosti", "Text")
+                doc_id = href.rstrip("/").split("/")[-1]
+                if doc_id not in seen_doc_ids:
+                    seen_doc_ids.add(doc_id)
+                    page_docs.append((link, urljoin(BASE_URL, href), doc_id))
 
-        print(f"=== Dokončeno. Pro rok {TARGET_YEAR} nově uloženo {saved} souborů. ===")
+            if not page_docs:
+                print("Na této stránce už nejsou žádná nová rozhodnutí. Konec ročníku.")
+                break
+
+            print(f"Nalezeno {len(page_docs)} nových rozhodnutí na straně {page}.")
+
+            for link_tag, doc_url, doc_id in page_docs:
+                try:
+                    doc_res = client.get(doc_url)
+                    if doc_res.status_code == 200:
+                        md_text, spzn, datum = extract_content(decode_html_safely(doc_res), link_tag, doc_url, doc_id)
+                        filename = sanitize_filename(spzn, doc_id)
+                        filepath = os.path.join(OUTPUT_DIR, filename)
+
+                        if not os.path.exists(filepath):
+                            with open(filepath, "w", encoding="utf-8") as f:
+                                f.write(md_text)
+                            total_saved += 1
+                            print(f"[{total_saved}] Uloženo: {filename} ({datum})")
+                        else:
+                            print(f"Už existuje: {filename}")
+                    time.sleep(0.6)
+                except Exception as e:
+                    print(f"Chyba {doc_url}: {e}")
+
+            page += 1
+            if page > 30:  # Bezpečnostní limit proti zacyklení
+                break
+
+        print(f"\n=== Hotovo! Celkem uloženo {total_saved} rozhodnutí pro rok {TARGET_YEAR}. ===")
 
 if __name__ == "__main__":
     run()
