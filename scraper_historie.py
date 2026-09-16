@@ -83,10 +83,39 @@ zdroj_url: "{doc_url}"
 """
     return yaml_header + md_body.strip(), spzn, datum
 
+def get_next_page_url(soup: BeautifulSoup, target_page: int) -> str | None:
+    """Dynamicky vyhledá odkaz na další stranu z pageru v HTML."""
+    pager = soup.find(["ul", "div", "nav"], class_=re.compile(r"pagin|pager|strankov", re.I))
+    scope = pager if pager else soup
+
+    # 1. Hledání odkazu s přesným číslem strany (např. text "2")
+    for a in scope.find_all("a"):
+        txt = a.get_text(strip=True)
+        href = a.get("href", "")
+        if txt == str(target_page) and href and href != "#" and not href.startswith("javascript:"):
+            return urljoin(BASE_URL, href)
+
+    # 2. Hledání odkazu podle URL parametru (?page=2 nebo ?strana=2)
+    for a in scope.find_all("a", href=True):
+        href = a["href"]
+        if re.search(rf"[?&](page|strana|stranka|p)={target_page}\b", href, re.I):
+            return urljoin(BASE_URL, href)
+
+    # 3. Hledání tlačítka Další / > / »
+    for a in scope.find_all("a"):
+        txt = a.get_text(strip=True).lower()
+        href = a.get("href", "")
+        rel = a.get("rel", [])
+        if "next" in rel or any(t in txt for t in ["další", "dalsi", ">", "»"]):
+            if href and href != "#" and not href.startswith("javascript:"):
+                return urljoin(BASE_URL, href)
+
+    return None
+
 def run():
-    print(f"=== Zahajuji kompletní stahování Afs pro rok {TARGET_YEAR} (včetně všech stran) ===")
+    print(f"=== Zahajuji archivaci Afs pro rok {TARGET_YEAR} ===")
     with httpx.Client(headers=HEADERS, timeout=40.0, follow_redirects=True) as client:
-        # 1. Získání základních polí formuláře
+        # Krok 1: Odeslání formuláře pro první stranu
         init_res = client.get(BASE_URL)
         soup = BeautifulSoup(decode_html_safely(init_res), "html.parser")
         form = soup.find("form")
@@ -94,40 +123,32 @@ def run():
             print("Formulář nebyl nalezen.")
             return
 
-        base_form = {inp.get("name"): inp.get("value", "") for inp in form.find_all("input") if inp.get("name")}
+        form_data = {inp.get("name"): inp.get("value", "") for inp in form.find_all("input") if inp.get("name")}
         for sel in form.find_all("select"):
             if sel.get("name"):
                 opt = sel.find("option", selected=True)
-                base_form[sel["name"]] = opt.get("value", "") if opt else ""
+                form_data[sel["name"]] = opt.get("value", "") if opt else ""
 
-        # Nastavení filtrů pro daný rok a rejstřík
-        for k in list(base_form.keys()):
+        for k in list(form_data.keys()):
             if "vyhledavaciSekce[0].vyhledavaciPodminka[1]" in k:
-                if k.endswith(".Visible"): base_form[k] = "True"
-                elif k.endswith(".HodnotaText"): base_form[k] = "Afs"
+                if k.endswith(".Visible"): form_data[k] = "True"
+                elif k.endswith(".HodnotaText"): form_data[k] = "Afs"
             if "vyhledavaciSekce[1].vyhledavaciPodminka[0]" in k:
-                if k.endswith(".Visible"): base_form[k] = "True"
-                elif k.endswith(".HodnotaDatumACasOd"): base_form[k] = f"01.01.{TARGET_YEAR}"
-                elif k.endswith(".HodnotaDatumACasDo"): base_form[k] = f"31.12.{TARGET_YEAR}"
+                if k.endswith(".Visible"): form_data[k] = "True"
+                elif k.endswith(".HodnotaDatumACasOd"): form_data[k] = f"01.01.{TARGET_YEAR}"
+                elif k.endswith(".HodnotaDatumACasDo"): form_data[k] = f"31.12.{TARGET_YEAR}"
+
+        print("Odesílám vyhledávací filtr na NSS...")
+        res = client.post(BASE_URL, data=form_data)
+        current_soup = BeautifulSoup(decode_html_safely(res), "html.parser")
 
         page = 1
         total_saved = 0
         seen_doc_ids = set()
 
         while True:
-            print(f"\n--- Načítám stránku {page} ---")
-            current_form = base_form.copy()
-            current_form["Strana"] = str(page)
-            current_form["Page"] = str(page)
-
-            # Odeslání dotazu pro konkrétní stranu
-            paged_url = f"{BASE_URL}/Home/Index?page={page}"
-            res = client.post(paged_url, data=current_form)
-            res_soup = BeautifulSoup(decode_html_safely(res), "html.parser")
-
-            links = res_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/|DokumentOriginal/Podrobnosti/"))
+            links = current_soup.find_all("a", href=re.compile(r"DokumentOriginal/Text/|/Text/|DokumentOriginal/Podrobnosti/"))
             
-            # Filtrujeme pouze unikátní ID z aktuální stránky
             page_docs = []
             for link in links:
                 href = link.get("href", "")
@@ -137,11 +158,11 @@ def run():
                     seen_doc_ids.add(doc_id)
                     page_docs.append((link, urljoin(BASE_URL, href), doc_id))
 
-            if not page_docs:
-                print("Na této stránce už nejsou žádná nová rozhodnutí. Konec ročníku.")
-                break
+            print(f"\n--- Strana {page}: nalezeno {len(page_docs)} nových rozhodnutí ---")
 
-            print(f"Nalezeno {len(page_docs)} nových rozhodnutí na straně {page}.")
+            if not page_docs:
+                print("Žádné nové položky na této straně. Konec procházení.")
+                break
 
             for link_tag, doc_url, doc_id in page_docs:
                 try:
@@ -162,11 +183,30 @@ def run():
                 except Exception as e:
                     print(f"Chyba {doc_url}: {e}")
 
-            page += 1
-            if page > 30:  # Bezpečnostní limit proti zacyklení
+            # Krok 2: Vyhledání reálného odkazu na stranu page + 1
+            next_url = get_next_page_url(current_soup, page + 1)
+            
+            if not next_url:
+                # Záložní pokus o přímé sestavení URL
+                next_url = f"{BASE_URL}/?page={page + 1}"
+                print(f"Zkouším záložní URL pro stranu {page + 1}: {next_url}")
+
+            print(f"Přecházím na stranu {page + 1} přes URL: {next_url}")
+            try:
+                page_res = client.get(next_url)
+                if page_res.status_code != 200:
+                    print(f"Server vrátil HTTP {page_res.status_code} při přechodu na stranu {page + 1}. Konec.")
+                    break
+                current_soup = BeautifulSoup(decode_html_safely(page_res), "html.parser")
+            except Exception as e:
+                print(f"Chyba při načítání strany {page + 1}: {e}")
                 break
 
-        print(f"\n=== Hotovo! Celkem uloženo {total_saved} rozhodnutí pro rok {TARGET_YEAR}. ===")
+            page += 1
+            if page > 35:  # Pojistka proti zacyklení
+                break
+
+        print(f"\n=== Hotovo! Celkem nově uloženo {total_saved} rozhodnutí pro rok {TARGET_YEAR}. ===")
 
 if __name__ == "__main__":
     run()
