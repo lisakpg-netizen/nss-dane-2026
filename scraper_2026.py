@@ -1,6 +1,7 @@
 import os
 import re
 import time
+from urllib.parse import urljoin
 import httpx
 from bs4 import BeautifulSoup
 from markdownify import markdownify as md
@@ -15,76 +16,127 @@ HEADERS = {
     "Accept-Language": "cs-CZ,cs;q=0.9",
 }
 
-def run():
-    print("=== KROK 1: Testuji spojení s webem NSS ===")
+def sanitize_filename(spzn: str) -> str:
+    clean = re.sub(r"[^\w\s-]", "_", spzn)
+    clean = re.sub(r"\s+", "_", clean.strip())
+    return f"NSS_{clean}.md"
+
+def extract_content(html: str, doc_url: str):
+    soup = BeautifulSoup(html, "html.parser")
     
+    def get_val(element_id):
+        el = soup.find(id=element_id)
+        return el.get_text(strip=True) if el else ""
+
+    spzn = get_val("lblSpisovaZnacka") or "Neznama_znacka"
+    ecli = get_val("lblEcli")
+    datum = get_val("lblDatumRozhodnuti")
+    forma = get_val("lblFormaRozhodnuti")
+
+    content_div = soup.find("div", id="divTextRozhodnuti") or soup.find("div", class_="rozhodnuti-fulltext")
+    body_html = str(content_div) if content_div else str(soup.body)
+    markdown_text = md(body_html, heading_style="ATX", strip=['script', 'style'])
+
+    yaml_frontmatter = f"""---
+soud: Nejvyšší správní soud
+rejstrik: Afs
+spisova_znacka: "{spzn}"
+ecli: "{ecli}"
+datum_rozhodnuti: "{datum}"
+forma: "{forma}"
+zdroj_url: "{doc_url}"
+---
+
+"""
+    return yaml_frontmatter + markdown_text.strip(), spzn
+
+def run():
+    print("--- 1. Načítám hlavní stránku vyhledávače NSS ---")
     with httpx.Client(headers=HEADERS, timeout=30.0, follow_redirects=True) as client:
-        try:
-            home = client.get(BASE_URL)
-            print(f"Odpověď hlavní stránky: HTTP {home.status_code}")
-            
-            if home.status_code != 200:
-                print(f"POZOR: Server NSS vrátil chybový kód {home.status_code}. Přístup z GitHubu je pravděpodobně blokován.")
-                return
-
-        except Exception as err:
-            print(f"Spojení se serverem NSS selhalo: {err}")
+        res = client.get(BASE_URL)
+        if res.status_code != 200:
+            print(f"Nelze načíst NSS, stav: {res.status_code}")
             return
 
-        print("\n=== KROK 2: Pokus o vyhledání rozhodnutí pro senát Afs (rok 2026) ===")
-        # Vyhledávač NSS podporuje přímé parametry v URL
-        search_urls = [
-            f"{BASE_URL}/Search/Index?Rejstrik=Afs&Rok=2026",
-            f"{BASE_URL}/?Rejstrik=Afs&Rok=2026",
-            f"{BASE_URL}/DokumentOriginal/Index?Rejstrik=Afs&Rok=2026"
-        ]
-
-        found_links = []
-        for url in search_urls:
-            print(f"Zkouším URL: {url}")
-            try:
-                res = client.get(url)
-                print(f"-> Stavový kód: {res.status_code}")
-                if res.status_code == 200:
-                    soup = BeautifulSoup(res.text, "html.parser")
-                    # Hledáme jakékoliv odkazy vedoucí na text rozhodnutí
-                    links = soup.find_all("a", href=re.compile(r"/DokumentOriginal/Text/|/Text/"))
-                    if links:
-                        print(f"-> ÚSPĚCH: Nalezeno {len(links)} odkazů na rozhodnutí!")
-                        found_links = links
-                        break
-                    else:
-                        # Zjistíme, co je na stránce za text
-                        title = soup.title.string if soup.title else "Bez titulku"
-                        print(f"-> Žádné odkazy nenalezeny. Titulek stránky: '{title.strip()}'")
-            except Exception as e:
-                print(f"-> Chyba při dotazu na {url}: {e}")
-
-        if not found_links:
-            print("\nZÁVĚR DIAGNOSTIKY: Server neodpověděl žádnými odkazy na rozhodnutí.")
-            print("To znamená, že buď pro rok 2026 zatím neeviduje záznamy, nebo vyžaduje vyplnění interního stavového formuláře.")
+        soup = BeautifulSoup(res.text, "html.parser")
+        form = soup.find("form")
+        if not form:
+            print("Formulář nebyl nalezen.")
             return
 
-        print(f"\n=== KROK 3: Stahuji {len(found_links)} nalezených rozhodnutí ===")
-        for a in found_links[:5]:  # Pro test zkusíme prvních 5
-            href = a["href"]
-            doc_url = f"{BASE_URL}{href}" if href.startswith("/") else f"{BASE_URL}/{href}"
-            print(f"Stahuji: {doc_url}")
+        # Sestavíme URL, kam se formulář posílá
+        action_url = urljoin(BASE_URL, form.get("action", ""))
+        method = form.get("method", "post").lower()
+        print(f"Formulář nalezen. Cíl: {action_url} (metoda: {method.upper()})")
+
+        # 2. Posbíráme všechna pole formuláře (včetně skrytých ViewState/CSRF tokenů)
+        form_data = {}
+        for inp in form.find_all("input"):
+            name = inp.get("name")
+            if name:
+                form_data[name] = inp.get("value", "")
+
+        for sel in form.find_all("select"):
+            name = sel.get("name")
+            if name:
+                selected = sel.find("option", selected=True)
+                form_data[name] = selected.get("value", "") if selected else ""
+
+        print(f"Nalezená pole formuláře: {list(form_data.keys())}")
+
+        # 3. Nastavíme parametry pro daňový senát Afs a rok 2026
+        # Skript prohledá názvy polí a dosadí hodnoty
+        for key in list(form_data.keys()):
+            k_low = key.lower()
+            if "rejstrik" in k_low or "senat" in k_low:
+                form_data[key] = "Afs"
+            elif "rok" in k_low:
+                form_data[key] = "2026"
+
+        print("--- 2. Odesílám vyhledávací dotaz (Afs 2026) ---")
+        if method == "post":
+            search_res = client.post(action_url, data=form_data)
+        else:
+            search_res = client.get(action_url, params=form_data)
+
+        print(f"Výsledek hledání HTTP: {search_res.status_code}")
+        search_soup = BeautifulSoup(search_res.text, "html.parser")
+
+        # Hledáme odkazy na texty rozhodnutí
+        links = search_soup.find_all("a", href=re.compile(r"/DokumentOriginal/Text/|/Text/"))
+        print(f"Nalezeno {len(links)} rozhodnutí.")
+
+        if not links:
+            # Pro kontrolu vypíšeme text, který stránka vrátila
+            text_snippet = search_soup.get_text(separator=" ", strip=True)[:400]
+            print(f"Ukázka textu z odpovědi: {text_snippet}")
+            return
+
+        # 3. Stažení nalezených rozhodnutí
+        print(f"--- 3. Zahajuji stahování {len(links)} souborů ---")
+        saved_count = 0
+        for link in links:
+            href = link["href"]
+            doc_url = urljoin(BASE_URL, href)
             try:
                 doc_res = client.get(doc_url)
                 if doc_res.status_code == 200:
-                    soup_doc = BeautifulSoup(doc_res.text, "html.parser")
-                    text_div = soup_doc.find("div", id="divTextRozhodnuti") or soup_doc.body
-                    md_text = md(str(text_div), heading_style="ATX", strip=['script', 'style'])
-                    
-                    doc_id = href.split("/")[-1]
-                    file_path = os.path.join(OUTPUT_DIR, f"NSS_Afs_2026_{doc_id}.md")
-                    with open(file_path, "w", encoding="utf-8") as f:
-                        f.write(md_text)
-                    print(f"Uloženo: {file_path}")
+                    md_text, spzn = extract_content(doc_res.text, doc_url)
+                    filename = sanitize_filename(spzn)
+                    filepath = os.path.join(OUTPUT_DIR, filename)
+
+                    if not os.path.exists(filepath):
+                        with open(filepath, "w", encoding="utf-8") as f:
+                            f.write(md_text)
+                        print(f"Uloženo: {filename}")
+                        saved_count += 1
+                    else:
+                        print(f"Již existuje: {filename}")
                 time.sleep(1.0)
             except Exception as e:
-                print(f"Chyba u souboru {doc_url}: {e}")
+                print(f"Chyba u {doc_url}: {e}")
+
+        print(f"Dokončeno. Nově uloženo {saved_count} rozhodnutí.")
 
 if __name__ == "__main__":
     run()
