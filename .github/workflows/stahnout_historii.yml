@@ -1,0 +1,37 @@
+name: Rucni stazeni vybraneho rocniku NSS Afs
+
+on:
+  workflow_dispatch:
+    inputs:
+      rok:
+        description: 'Zadejte rok k archivaci (např. 2025, 2024 ... 2015):'
+        required: true
+        default: '2025'
+
+jobs:
+  scrape-year:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Nacist repozitar
+        uses: actions/checkout@v4
+
+      - name: Pripravit Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Nainstalovat knihovny
+        run: pip install httpx beautifulsoup4 markdownify
+
+      - name: Spustit stahovani pro zadany rok
+        run: python scraper_historie.py ${{ github.event.inputs.rok }}
+
+      - name: Ulozit rocnik do gitu
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "NSS Historicky Archivator"
+          git add judikatura/
+          git diff --staged --quiet || (git commit -m "Archiv: nacten rocnik NSS Afs ${{ github.event.inputs.rok }}" && git push)
