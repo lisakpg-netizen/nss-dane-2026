@@ -1,34 +1,44 @@
-name: Tydenni stahovani rozhodnuti NSS Afs (2026)
+name: Týdenní monitoring judikatury NSS (Afs)
 
 on:
   schedule:
-    - cron: '0 6 * * 1'
-  workflow_dispatch:
+    - cron: '0 6 * * 1'   # Každé pondělí v 6:00 UTC (7:00 / 8:00 CET)
+  workflow_dispatch:       # Tlačítko pro okamžité ruční spuštění
+
+permissions:
+  contents: write
 
 jobs:
-  scrape-and-save:
+  nss-digest:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
-      - name: Nacist repozitar
+      - name: Převzetí repozitáře
         uses: actions/checkout@v4
 
-      - name: Pripravit Python
+      - name: Nastavení Pythonu
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Nainstalovat knihovny
-        run: pip install httpx beautifulsoup4 markdownify
+      - name: Instalace knihoven
+        run: pip install httpx beautifulsoup4 markdownify google-genai
 
-      - name: Spustit scraper
-        run: python scraper_2026.py
+      - name: Spuštění kontroly, analýzy a odeslání e-mailu
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python scraper_nss_digest.py
 
-      - name: Ulozit zmeny do gitu
+      - name: Uložení nových rozhodnutí a archivu do repozitáře
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "NSS Automat"
-          git add judikatura/
-          git diff --staged --quiet || (git commit -m "Auto: aktualizace NSS Afs 2026" && git push)
+          git config --global user.name "NSS Bot"
+          git config --global user.email "bot@taxlaw.cloud"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Žádné nové změny k uložení."
+          else
+            git commit -m "Auto: synchronizace judikatury NSS a archivu [skip ci]"
+            git push
+          fi
