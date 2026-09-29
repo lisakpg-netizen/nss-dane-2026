@@ -2,8 +2,8 @@ name: Týdenní monitoring judikatury NSS (Afs)
 
 on:
   schedule:
-    - cron: '0 6 * * 1'   # Každé pondělí v 6:00 UTC (7:00 / 8:00 CET)
-  workflow_dispatch:       # Tlačítko pro okamžité ruční spuštění
+    - cron: '0 6 * * 1'   # 1 = pondělí v 7:00/8:00 ráno podle letního/zimního času
+  workflow_dispatch:
 
 permissions:
   contents: write
