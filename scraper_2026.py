@@ -301,7 +301,7 @@ def main():
     print("--- KONTROLA NASTAVENÍ NSS WATCHER ---")
     if GEMINI_KEY:
         print(f"GEMINI_API_KEY nalezen: Ano (délka: {len(GEMINI_KEY)} znaků)")
-        client = genai.Client(api_key=GEMINI_KEY)
+        client = genai.Client(api_key=GEMINI_KEY, http_options={'api_version': 'v1beta'})
     else:
         print("⚠️ GEMINI_API_KEY nenalezen, použije se textový fallback.")
         client = None
