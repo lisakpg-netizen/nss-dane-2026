@@ -367,8 +367,8 @@ def main():
             doc_url = urljoin(BASE_URL, href)
             doc_id = href.rstrip("/").split("/")[-1]
 
-         # if doc_id in archiv:
-#     continue
+          if doc_id in archiv:
+     continue
 
             try:
                 doc_res = http_client.get(doc_url)
