@@ -220,7 +220,7 @@ STRIKTNÍ PRAVIDLA:
    - ZAČNI PŘÍMO VÝSLEDNÝM VERDIKTEM (např. 'Kasační stížnost daňového subjektu ZAMÍTNUTA.', 'Rozsudek krajského soudu ZRUŠEN pro nepřezkoumatelnost.', 'Kasační stížnosti OFŘ VYHOVĚNO.').
    - Uveď KLÍČOVÝ PRÁVNÍ DŮVOD / PRÁVNÍ VĚTU: Proč takto NSS rozhodl a o jaké klíčové ustanovení zákona (ZDP, ZDPH, daňový řád) se opřel.
 
-Vrať POUZE validní formát JSON:
+Vrať POUZE validní formát JSON bez jakéhokoliv dalšího textu:
 {{"spor": "...", "vyrok": "..."}}
 """
 
@@ -229,17 +229,18 @@ Vrať POUZE validní formát JSON:
       res = client.models.generate_content(
           model=model_name,
           contents=prompt,
-          config=types.GenerateContentConfig(
-              temperature=0.1, response_mime_type="application/json"
-          ),
+          config=types.GenerateContentConfig(temperature=0.1),
       )
       raw = res.text.strip()
-      raw = re.sub(r"^```json\s*", "", raw)
-      raw = re.sub(r"\s*```$", "", raw)
-      data = json.loads(raw)
-      if "spor" in data and "vyrok" in data:
-        print(f"  ✓ Judikát {spzn} úspěšně analyzován modelem Gemini.")
-        return {"spor": data["spor"].strip(), "vyrok": data["vyrok"].strip()}
+      json_match = re.search(r"\{.*\}", raw, re.DOTALL)
+      if json_match:
+        data = json.loads(json_match.group(0))
+        if "spor" in data and "vyrok" in data:
+          print(f"  ✓ Judikát {spzn} úspěšně analyzován modelem Gemini.")
+          return {
+              "spor": data["spor"].strip(),
+              "vyrok": data["vyrok"].strip(),
+          }
     except Exception as e:
       if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
         print(f"  ⏳ Limit kvóty (429) u {spzn}. Čekám 30 s...")
@@ -347,7 +348,9 @@ def main():
   print("--- KONTROLA NASTAVENÍ NSS WATCHER ---")
   if GEMINI_KEY:
     print(f"GEMINI_API_KEY nalezen: Ano (délka: {len(GEMINI_KEY)} znaků)")
-    client = genai.Client(api_key=GEMINI_KEY)
+    client = genai.Client(
+        api_key=GEMINI_KEY, http_options={"api_version": "v1beta"}
+    )
   else:
     print("⚠️ GEMINI_API_KEY nenalezen, použije se textový fallback.")
     client = None
