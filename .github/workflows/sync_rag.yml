@@ -43,9 +43,15 @@ jobs:
         run: python scripts/sync_gemini_rag.py
 
       - name: Uložení stavu indexu do repozitáře
+        if: always()
         run: |
-          git config user.name "NSS RAG Bot"
-          git config user.email "bot@taxlaw.cloud"
-          git add registry/rag_index.json
-          git diff --staged --quiet || git commit -m "chore: update NSS RAG index [skip ci]"
-          git push
+          if [ -f registry/rag_index.json ]; then
+            git config user.name "NSS RAG Bot"
+            git config user.email "bot@taxlaw.cloud"
+            git add registry/rag_index.json
+            if ! git diff --staged --quiet; then
+              git commit -m "chore: update NSS RAG index [skip ci]"
+              git pull --rebase origin main
+              git push origin main
+            fi
+          fi
