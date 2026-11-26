@@ -69,10 +69,34 @@ def get_or_create_store(client: genai.Client, state: dict) -> str:
     return created.name
 
 
-def parse_nss_frontmatter(text: str) -> dict[str, str]:
-    """Vyčte metadata z YAML hlavičky rozhodnutí NSS."""
+def fetch_existing_remote_docs(
+    client: genai.Client, store_name: str
+) -> tuple[dict[str, str], dict[str, str]]:
+    """Načte dokumenty už nahrané ve Storu, aby se při obnově indexu nenahrávaly znovu."""
+    by_rel: dict[str, str] = {}
+    by_title: dict[str, str] = {}
+    try:
+        for doc in client.file_search_stores.documents.list(parent=store_name):
+            doc_name = getattr(doc, "name", "") or ""
+            if not doc_name:
+                continue
+            title = getattr(doc, "display_name", "") or ""
+            if title and title not in by_title:
+                by_title[title] = doc_name
+            for item in getattr(doc, "custom_metadata", None) or []:
+                if getattr(item, "key", None) == "rel_path":
+                    rel_val = getattr(item, "string_value", None) or ""
+                    if rel_val:
+                        by_rel[rel_val] = doc_name
+    except Exception as exc:
+        print(f"Varování při čtení existujících dokumentů ze Storu: {exc}")
+    return by_rel, by_title
+
+
+def parse_nss_frontmatter(text: str) -> tuple[dict[str, str], str]:
+    """Vyčte metadata z YAML hlavičky a vrátí (metadata, čistý text rozhodnutí)."""
     if not text.startswith("---"):
-        return {}
+        return {}, text
     lines = text.splitlines()
     end_idx = None
     for idx in range(1, len(lines)):
@@ -80,7 +104,7 @@ def parse_nss_frontmatter(text: str) -> dict[str, str]:
             end_idx = idx
             break
     if end_idx is None:
-        return {}
+        return {}, text
 
     meta: dict[str, str] = {}
     for line in lines[1:end_idx]:
@@ -91,7 +115,9 @@ def parse_nss_frontmatter(text: str) -> dict[str, str]:
         val = val.strip().strip('"').strip("'")
         if key and val:
             meta[key] = val
-    return meta
+
+    body = "\n".join(lines[end_idx + 1 :]).strip()
+    return meta, body
 
 
 def collect_files() -> list[Path]:
@@ -100,14 +126,12 @@ def collect_files() -> list[Path]:
     return sorted(JUDIKATURA_DIR.rglob("*.md"))
 
 
-def build_metadata(path: Path) -> tuple[str, list[dict[str, str]]]:
+def build_metadata(path: Path, fm: dict[str, str]) -> tuple[str, list[dict[str, str]]]:
     rel = path.relative_to(ROOT_DIR).as_posix()
     parts = rel.split("/")
-    # judikatura/Afs/2026/NSS_... -> rejstrik = afs, složka roku = 2026
     rejstrik_folder = parts[1].lower() if len(parts) >= 3 else "afs"
     year_folder = parts[2] if len(parts) >= 4 and parts[2].isdigit() else ""
 
-    fm = parse_nss_frontmatter(path.read_text("utf-8"))
     spzn = fm.get("spisova_znacka", "").strip() or path.stem.replace("NSS_", "").replace("_", " ")
     ecli = fm.get("ecli", "").strip()
     datum = fm.get("datum_rozhodnuti", "").strip()
@@ -173,7 +197,6 @@ def upload_document(
     display_name: str,
     custom_metadata: list[dict[str, str]],
 ) -> str:
-    # Dočasný ASCII název kvůli HTTP hlavičce v google-genai SDK
     suffix = path.suffix.lower() or ".md"
     with tempfile.NamedTemporaryFile(prefix="rag_nss_", suffix=suffix, delete=False) as tmp:
         tmp_path = Path(tmp.name)
@@ -219,6 +242,30 @@ def upload_document(
         tmp_path.unlink(missing_ok=True)
 
 
+def upload_document_with_retry(
+    client: genai.Client,
+    store_name: str,
+    path: Path,
+    display_name: str,
+    custom_metadata: list[dict[str, str]],
+    max_attempts: int = 3,
+) -> str:
+    last_exc: Exception | None = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            return upload_document(client, store_name, path, display_name, custom_metadata)
+        except Exception as exc:
+            last_exc = exc
+            msg = str(exc)
+            if "400" in msg and "INVALID_ARGUMENT" in msg:
+                raise
+            if attempt < max_attempts:
+                wait_s = 5 * attempt
+                print(f"  ⚠️ Pokus {attempt}/{max_attempts} selhal ({exc}). Čekám {wait_s} s...")
+                time.sleep(wait_s)
+    raise RuntimeError(f"Selhalo po {max_attempts} pokusech: {last_exc}")
+
+
 def main() -> None:
     force_resync = os.getenv("FORCE_RESYNC", "").lower() in {"1", "true", "yes"}
     max_uploads = int(os.getenv("MAX_UPLOADS", "0") or "0")
@@ -233,6 +280,11 @@ def main() -> None:
     current_rel_paths = {p.relative_to(ROOT_DIR).as_posix() for p in files}
     tracked: dict = state.setdefault("files", {})
 
+    remote_by_rel: dict[str, str] = {}
+    remote_by_title: dict[str, str] = {}
+    if not force_resync and len(tracked) < len(files):
+        remote_by_rel, remote_by_title = fetch_existing_remote_docs(client, store_name)
+
     removed_paths = [rel for rel in list(tracked.keys()) if rel not in current_rel_paths]
     for rel in removed_paths:
         print(f"Mažu odstraněné rozhodnutí z RAG: {rel}")
@@ -241,6 +293,10 @@ def main() -> None:
 
     uploaded = 0
     skipped = 0
+    adopted = 0
+    empty_skipped = 0
+    failed = 0
+
     for path in files:
         rel = path.relative_to(ROOT_DIR).as_posix()
         digest = sha256_file(path)
@@ -250,16 +306,42 @@ def main() -> None:
             skipped += 1
             continue
 
+        raw_text = path.read_text("utf-8", errors="replace")
+        fm, body = parse_nss_frontmatter(raw_text)
+        if len(body.strip()) < 30:
+            empty_skipped += 1
+            continue
+
+        display_name, custom_metadata = build_metadata(path, fm)
+
+        if not prev and not force_resync:
+            existing_doc = remote_by_rel.get(rel) or remote_by_title.get(display_name)
+            if existing_doc:
+                tracked[rel] = {
+                    "sha256": digest,
+                    "display_name": display_name,
+                    "document_name": existing_doc,
+                }
+                adopted += 1
+                continue
+
         if max_uploads > 0 and uploaded >= max_uploads:
             print(f"Dosažen limit MAX_UPLOADS={max_uploads}, zbytek proběhne při dalším spuštění.")
             break
 
-        display_name, custom_metadata = build_metadata(path)
         if prev and prev.get("document_name"):
             delete_remote_document(client, prev["document_name"])
 
         print(f"[{uploaded + 1}] Indexuji: {rel} -> '{display_name}'")
-        doc_name = upload_document(client, store_name, path, display_name, custom_metadata)
+        try:
+            doc_name = upload_document_with_retry(
+                client, store_name, path, display_name, custom_metadata
+            )
+        except Exception as exc:
+            failed += 1
+            print(f"  ❌ Přeskakuji soubor {rel} kvůli chybě: {exc}")
+            continue
+
         tracked[rel] = {
             "sha256": digest,
             "display_name": display_name,
@@ -274,7 +356,9 @@ def main() -> None:
     save_state(state)
     print(
         f"Hotovo | Store: {store_name} ({STORE_DISPLAY_NAME}) | "
-        f"Nahráno: {uploaded} | Přeskočeno beze změny: {skipped} | Smazáno: {len(removed_paths)}"
+        f"Nahráno: {uploaded} | Převzato ze Storu: {adopted} | "
+        f"Přeskočeno beze změny: {skipped} | Prázdné: {empty_skipped} | "
+        f"Chyby: {failed} | Smazáno: {len(removed_paths)}"
     )
 
 
