@@ -1,0 +1,51 @@
+name: Sync RAG Database (NSS Afs)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "judikatura/**/*.md"
+      - "scripts/sync_gemini_rag.py"
+  workflow_dispatch:
+    inputs:
+      force_resync:
+        description: "Přeindexovat všechna rozhodnutí znovu (true/false)"
+        required: false
+        default: "false"
+      max_uploads:
+        description: "Max počet souborů na jeden běh (0 = bez limitu)"
+        required: false
+        default: "0"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-rag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Převzetí repozitáře
+        uses: actions/checkout@v4
+
+      - name: Nastavení Pythonu
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalace Google GenAI SDK
+        run: pip install --upgrade google-genai
+
+      - name: Synchronizace rozhodnutí NSS do Gemini RAG
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORCE_RESYNC: ${{ github.event.inputs.force_resync || 'false' }}
+          MAX_UPLOADS: ${{ github.event.inputs.max_uploads || '0' }}
+        run: python scripts/sync_gemini_rag.py
+
+      - name: Uložení stavu indexu do repozitáře
+        run: |
+          git config user.name "NSS RAG Bot"
+          git config user.email "bot@taxlaw.cloud"
+          git add registry/rag_index.json
+          git diff --staged --quiet || git commit -m "chore: update NSS RAG index [skip ci]"
+          git push
