@@ -1,4 +1,26 @@
-- name: Instalace knihoven
+name: Týdenní monitoring judikatury NSS (Afs)
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # 1 = pondělí v 7:00/8:00 ráno podle letního/zimního času
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  nss-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Převzetí repozitáře
+        uses: actions/checkout@v4
+
+      - name: Nastavení Pythonu
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalace knihoven
         run: pip install --upgrade httpx beautifulsoup4 markdownify google-genai
 
       - name: Spuštění kontroly, analýzy a odeslání e-mailu
