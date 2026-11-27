@@ -120,10 +120,18 @@ def parse_nss_frontmatter(text: str) -> tuple[dict[str, str], str]:
     return meta, body
 
 
-def collect_files() -> list[Path]:
+def collect_files(min_year: int = 0) -> list[Path]:
     if not JUDIKATURA_DIR.exists():
         return []
-    return sorted(JUDIKATURA_DIR.rglob("*.md"))
+    files: list[Path] = []
+    for path in sorted(JUDIKATURA_DIR.rglob("*.md")):
+        if min_year > 0:
+            rel_parts = path.relative_to(ROOT_DIR).parts
+            if len(rel_parts) >= 4 and rel_parts[2].isdigit():
+                if int(rel_parts[2]) < min_year:
+                    continue
+        files.append(path)
+    return files
 
 
 def build_metadata(path: Path, fm: dict[str, str]) -> tuple[str, list[dict[str, str]]]:
@@ -242,33 +250,10 @@ def upload_document(
         tmp_path.unlink(missing_ok=True)
 
 
-def upload_document_with_retry(
-    client: genai.Client,
-    store_name: str,
-    path: Path,
-    display_name: str,
-    custom_metadata: list[dict[str, str]],
-    max_attempts: int = 3,
-) -> str:
-    last_exc: Exception | None = None
-    for attempt in range(1, max_attempts + 1):
-        try:
-            return upload_document(client, store_name, path, display_name, custom_metadata)
-        except Exception as exc:
-            last_exc = exc
-            msg = str(exc)
-            if "400" in msg and "INVALID_ARGUMENT" in msg:
-                raise
-            if attempt < max_attempts:
-                wait_s = 5 * attempt
-                print(f"  ⚠️ Pokus {attempt}/{max_attempts} selhal ({exc}). Čekám {wait_s} s...")
-                time.sleep(wait_s)
-    raise RuntimeError(f"Selhalo po {max_attempts} pokusech: {last_exc}")
-
-
 def main() -> None:
     force_resync = os.getenv("FORCE_RESYNC", "").lower() in {"1", "true", "yes"}
-    max_uploads = int(os.getenv("MAX_UPLOADS", "0") or "0")
+    max_uploads = int(os.getenv("MAX_UPLOADS", "250") or "250")
+    min_year = int(os.getenv("MIN_YEAR", "0") or "0")
 
     client = get_client()
     state = load_state()
@@ -276,7 +261,7 @@ def main() -> None:
     state["store_name"] = store_name
     state["store_display_name"] = STORE_DISPLAY_NAME
 
-    files = collect_files()
+    files = collect_files(min_year=min_year)
     current_rel_paths = {p.relative_to(ROOT_DIR).as_posix() for p in files}
     tracked: dict = state.setdefault("files", {})
 
@@ -295,7 +280,7 @@ def main() -> None:
     skipped = 0
     adopted = 0
     empty_skipped = 0
-    failed = 0
+    consecutive_timeouts = 0
 
     for path in files:
         rel = path.relative_to(ROOT_DIR).as_posix()
@@ -326,7 +311,7 @@ def main() -> None:
                 continue
 
         if max_uploads > 0 and uploaded >= max_uploads:
-            print(f"Dosažen limit MAX_UPLOADS={max_uploads}, zbytek proběhne při dalším spuštění.")
+            print(f"Dosažen limit dávky MAX_UPLOADS={max_uploads}. Ukládám index, zbytek proběhne v dalším běhu.")
             break
 
         if prev and prev.get("document_name"):
@@ -334,11 +319,21 @@ def main() -> None:
 
         print(f"[{uploaded + 1}] Indexuji: {rel} -> '{display_name}'")
         try:
-            doc_name = upload_document_with_retry(
-                client, store_name, path, display_name, custom_metadata
-            )
+            doc_name = upload_document(client, store_name, path, display_name, custom_metadata)
+            consecutive_timeouts = 0
+        except TimeoutError as exc:
+            consecutive_timeouts += 1
+            print(f"  ⏳ Timeout ({consecutive_timeouts}/3): {exc}")
+            if consecutive_timeouts >= 3:
+                print("  ⚠️ Google indexovací fronta je přetížená – ukládám dosavadní postup a končím dávku.")
+                break
+            time.sleep(15)
+            continue
         except Exception as exc:
-            failed += 1
+            msg = str(exc)
+            if "RESOURCE_EXHAUSTED" in msg or "quota" in msg.lower() or "storage" in msg.lower():
+                print(f"  🛑 Dosažen limit kapacity nebo kvóty Google File Search: {exc}")
+                break
             print(f"  ❌ Přeskakuji soubor {rel} kvůli chybě: {exc}")
             continue
 
@@ -348,7 +343,7 @@ def main() -> None:
             "document_name": doc_name,
         }
         uploaded += 1
-        time.sleep(0.25)
+        time.sleep(0.5)
 
         if uploaded % 25 == 0:
             save_state(state)
@@ -356,9 +351,9 @@ def main() -> None:
     save_state(state)
     print(
         f"Hotovo | Store: {store_name} ({STORE_DISPLAY_NAME}) | "
-        f"Nahráno: {uploaded} | Převzato ze Storu: {adopted} | "
+        f"Nahráno v dávce: {uploaded} | Převzato ze Storu: {adopted} | "
         f"Přeskočeno beze změny: {skipped} | Prázdné: {empty_skipped} | "
-        f"Chyby: {failed} | Smazáno: {len(removed_paths)}"
+        f"Celkem v indexu: {len(tracked)}"
     )
 
 
