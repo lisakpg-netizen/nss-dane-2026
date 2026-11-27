@@ -8,14 +8,18 @@ on:
       - "scripts/sync_gemini_rag.py"
   workflow_dispatch:
     inputs:
-      force_resync:
-        description: "Přeindexovat všechna rozhodnutí znovu (true/false)"
-        required: false
-        default: "false"
       max_uploads:
-        description: "Max počet souborů na jeden běh (0 = bez limitu)"
+        description: "Max počet souborů v jedné dávce (doporučeno 250)"
+        required: false
+        default: "250"
+      min_year:
+        description: "Indexovat od roku (0 = všechny roky, např. 2018)"
         required: false
         default: "0"
+      force_resync:
+        description: "Přeindexovat všechny soubory znovu (true/false)"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -23,6 +27,7 @@ permissions:
 jobs:
   sync-rag:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Převzetí repozitáře
         uses: actions/checkout@v4
@@ -39,7 +44,8 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FORCE_RESYNC: ${{ github.event.inputs.force_resync || 'false' }}
-          MAX_UPLOADS: ${{ github.event.inputs.max_uploads || '0' }}
+          MAX_UPLOADS: ${{ github.event.inputs.max_uploads || '250' }}
+          MIN_YEAR: ${{ github.event.inputs.min_year || '0' }}
         run: python scripts/sync_gemini_rag.py
 
       - name: Uložení stavu indexu do repozitáře
