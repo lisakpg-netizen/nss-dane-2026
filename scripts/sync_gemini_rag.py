@@ -16,8 +16,8 @@ SOURCE_REPO = "nss"
 DEFAULT_DOC_TYPE = "Judikatura"
 DEFAULT_AUTHORITY = "binding"
 
-# 0 = indexovat všechny ročníky rozsudků v repozitáři (lze přepsat přes proměnnou MIN_YEAR)
-DEFAULT_MIN_YEAR = 0
+# Nově nahrávat pouze rozsudky od roku 2015 včetně (dříve nahrané starší rozsudky se NEMAŽOU)
+DEFAULT_MIN_YEAR = 2015
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 JUDIKATURA_DIR = ROOT_DIR / "judikatura"
@@ -145,33 +145,19 @@ def detect_forma(fm: dict[str, str], body: str) -> str:
     return "Rozsudek"
 
 
-def is_rozsudek_only(path: Path, fm: dict[str, str], body: str, min_year: int) -> tuple[bool, str]:
-    """Vrátí (True, 'Rozsudek') pouze pro neprázdné rozsudky."""
-    if len(body.strip()) < 100:
-        return False, "Prázdné"
-
-    forma = detect_forma(fm, body)
-    if forma != "Rozsudek":
-        return False, forma
-
-    if min_year > 0:
-        rel_parts = path.relative_to(ROOT_DIR).parts
-        year_val = 0
-        if len(rel_parts) >= 4 and rel_parts[2].isdigit():
-            year_val = int(rel_parts[2])
-        elif fm.get("rok_archivace", "").isdigit():
-            year_val = int(fm["rok_archivace"])
-        else:
-            m = re.search(
-                r"\b(20\d{2})\b",
-                fm.get("datum_rozhodnuti", "") + " " + fm.get("spisova_znacka", ""),
-            )
-            if m:
-                year_val = int(m.group(1))
-        if year_val > 0 and year_val < min_year:
-            return False, forma
-
-    return True, forma
+def resolve_year(path: Path, fm: dict[str, str]) -> int:
+    rel_parts = path.relative_to(ROOT_DIR).parts
+    if len(rel_parts) >= 4 and rel_parts[2].isdigit():
+        return int(rel_parts[2])
+    if fm.get("rok_archivace", "").isdigit():
+        return int(fm["rok_archivace"])
+    m_date = re.search(r"\b(20\d{2})\b", fm.get("datum_rozhodnuti", ""))
+    if m_date:
+        return int(m_date.group(1))
+    m_spzn = re.search(r"/(20\d{2})\b", fm.get("spisova_znacka", ""))
+    if m_spzn:
+        return int(m_spzn.group(1))
+    return 0
 
 
 def collect_candidate_files() -> list[Path]:
@@ -181,22 +167,17 @@ def collect_candidate_files() -> list[Path]:
 
 
 def build_metadata(
-    path: Path, fm: dict[str, str], resolved_forma: str
+    path: Path, fm: dict[str, str], resolved_forma: str, year_val: int
 ) -> tuple[str, list[dict[str, str]]]:
     rel = path.relative_to(ROOT_DIR).as_posix()
     parts = rel.split("/")
     rejstrik_folder = parts[1].lower() if len(parts) >= 3 else "afs"
-    year_folder = parts[2] if len(parts) >= 4 and parts[2].isdigit() else ""
 
     spzn = fm.get("spisova_znacka", "").strip() or path.stem.replace("NSS_", "").replace("_", " ")
     ecli = fm.get("ecli", "").strip()
     datum = fm.get("datum_rozhodnuti", "").strip()
     rejstrik = fm.get("rejstrik", rejstrik_folder).strip().lower()
-
-    rok = fm.get("rok_archivace", "").strip() or year_folder
-    if not rok:
-        m_year = re.search(r"\b(20\d{2})\b", datum) or re.search(r"/(20\d{2})\b", spzn)
-        rok = m_year.group(1) if m_year else ""
+    rok = str(year_val) if year_val > 0 else ""
 
     slug = re.sub(r"[^a-z0-9]+", "-", spzn.lower()).strip("-") or path.stem.lower()
     display_name = (
@@ -304,7 +285,7 @@ def main() -> None:
     force_resync = os.getenv("FORCE_RESYNC", "").lower() in {"1", "true", "yes"}
     max_uploads = int(os.getenv("MAX_UPLOADS", "250") or "250")
     env_year = os.getenv("MIN_YEAR", "").strip()
-    min_year = int(env_year) if env_year.isdigit() and int(env_year) > 0 else DEFAULT_MIN_YEAR
+    min_year = int(env_year) if env_year.isdigit() else DEFAULT_MIN_YEAR
 
     client = get_client()
     state = load_state()
@@ -312,57 +293,68 @@ def main() -> None:
     state["store_name"] = store_name
     state["store_display_name"] = STORE_DISPLAY_NAME
 
-    eligible_items: list[tuple[Path, dict[str, str], str]] = []
-    excluded_count = 0
+    # 1. Najdeme VŠECHNY platné rozsudky napříč všemi ročníky (abychom starší už nahrané nesmazali)
+    all_rozsudky: list[tuple[str, Path, dict[str, str], str, int]] = []
+    excluded_usneseni = 0
+
     for path in collect_candidate_files():
         raw_text = path.read_text("utf-8", errors="replace")
         fm, body = parse_nss_frontmatter(raw_text)
-        ok, resolved_forma = is_rozsudek_only(path, fm, body, min_year=min_year)
-        if not ok:
-            excluded_count += 1
+        if len(body.strip()) < 100:
+            excluded_usneseni += 1
             continue
-        eligible_items.append((path, fm, resolved_forma))
+        forma = detect_forma(fm, body)
+        if forma != "Rozsudek":
+            excluded_usneseni += 1
+            continue
+        rel = path.relative_to(ROOT_DIR).as_posix()
+        year_val = resolve_year(path, fm)
+        all_rozsudky.append((rel, path, fm, forma, year_val))
 
-    eligible_rel_paths = {p.relative_to(ROOT_DIR).as_posix() for p, _, _ in eligible_items}
+    all_rozsudky_rel_paths = {rel for rel, _, _, _, _ in all_rozsudky}
     tracked: dict = state.setdefault("files", {})
 
+    # 2. Mažeme ze Storu POUZE usnesení nebo soubory fyzicky smazané z repozitáře (NIKDY starší rozsudky)
     remote_by_rel, remote_by_title = fetch_existing_remote_docs(client, store_name)
-    removed_paths = [rel for rel in list(tracked.keys()) if rel not in eligible_rel_paths]
+    removed_paths = [rel for rel in list(tracked.keys()) if rel not in all_rozsudky_rel_paths]
     already_deleted: set[str] = set()
 
     for idx, rel in enumerate(removed_paths, 1):
         doc_name = tracked[rel].get("document_name", "")
         if idx <= 10 or idx % 50 == 0:
-            print(f"Odstraňuji z RAG (usnesení / mimo filtr): {rel} [{idx}/{len(removed_paths)}]")
+            print(f"Odstraňuji z RAG (usnesení / smazaný soubor): {rel} [{idx}/{len(removed_paths)}]")
         if doc_name and doc_name not in already_deleted:
             delete_remote_document(client, doc_name)
             already_deleted.add(doc_name)
         del tracked[rel]
 
     for rel, doc_name in remote_by_rel.items():
-        if rel not in eligible_rel_paths and doc_name not in already_deleted:
+        if rel not in all_rozsudky_rel_paths and doc_name not in already_deleted:
             delete_remote_document(client, doc_name)
             already_deleted.add(doc_name)
 
     if removed_paths:
         save_state(state)
 
+    # 3. Převzetí všech už nahraných rozsudků (včetně 2010–2014) + nahrání chybějících od min_year
     uploaded = 0
     skipped = 0
     adopted = 0
+    deferred_older = 0
     consecutive_timeouts = 0
 
-    for path, fm, resolved_forma in eligible_items:
-        rel = path.relative_to(ROOT_DIR).as_posix()
+    for rel, path, fm, resolved_forma, year_val in all_rozsudky:
         digest = sha256_file(path)
         prev = tracked.get(rel)
 
+        # Už evidováno v indexu beze změny -> ponechat
         if not force_resync and prev and prev.get("sha256") == digest and prev.get("document_name"):
             skipped += 1
             continue
 
-        display_name, custom_metadata = build_metadata(path, fm, resolved_forma)
+        display_name, custom_metadata = build_metadata(path, fm, resolved_forma, year_val)
 
+        # Pokud už rozsudek ve Storu leží (i z let 2010–2014), převezmeme ho do indexu bez nahrávání
         if not prev and not force_resync:
             existing_doc = remote_by_rel.get(rel) or remote_by_title.get(display_name)
             if existing_doc:
@@ -373,6 +365,11 @@ def main() -> None:
                 }
                 adopted += 1
                 continue
+
+        # Starší dosud nenahrané rozsudky před min_year jen přeskočíme pro pozdější doindexaci
+        if min_year > 0 and year_val > 0 and year_val < min_year:
+            deferred_older += 1
+            continue
 
         if max_uploads > 0 and uploaded >= max_uploads:
             print(f"Dosažen limit dávky MAX_UPLOADS={max_uploads}. Ukládám index, zbytek proběhne v dalším běhu.")
@@ -414,7 +411,8 @@ def main() -> None:
 
     save_state(state)
     print(
-        f"Hotovo | Vyřazeno usnesení: {excluded_count} | Smazáno ze Storu: {len(removed_paths)} | "
+        f"Hotovo | Nahrávání od roku: {min_year} | Vyřazeno usnesení: {excluded_usneseni} | "
+        f"Odloženo starších (před {min_year}): {deferred_older} | Smazáno ze Storu: {len(removed_paths)} | "
         f"Převzato ze Storu: {adopted} | Nahráno v dávce: {uploaded} | "
         f"Beze změny: {skipped} | Celkem rozsudků v RAG: {len(tracked)}"
     )
