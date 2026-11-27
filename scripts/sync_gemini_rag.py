@@ -122,25 +122,38 @@ def parse_nss_frontmatter(text: str) -> tuple[dict[str, str], str]:
     return meta, body
 
 
-def is_rozsudek_only(path: Path, fm: dict[str, str], body: str, min_year: int) -> bool:
-    """Vrátí True pouze pro neprázdné rozsudky (vyřadí veškerá usnesení)."""
-    if len(body.strip()) < 100:
-        return False
-
-    # 1. Kontrola formy v YAML hlavičce
-    forma = fm.get("forma", "").strip().lower()
-    if "usnesení" in forma or "usneseni" in forma:
-        return False
-
-    # 2. Pojistka podle nadpisu v záhlaví textu (pro případy, kdy YAML forma chybí)
+def detect_forma(fm: dict[str, str], body: str) -> str:
+    """Spolehlivě určí formu rozhodnutí přímo ze záhlaví textu (ROZSUDEK vs. USNESENÍ)."""
+    header_sample = re.sub(r"\s+", " ", body[:2000])
     if re.search(
-        r"(?:^|\n)\s*(?:#+\s*)?u\s*s\s*n\s*e\s*s\s*e\s*n\s*[íi]\b",
-        body[:2500],
+        r"r\s*o\s*z\s*s\s*u\s*d\s*e\s*k\s+j\s*m\s*[eé]\s*n\s*e\s*m",
+        header_sample,
         re.IGNORECASE,
     ):
-        return False
+        return "Rozsudek"
 
-    # 3. Volitelný filtr podle roku (výchozí 0 = všechny roky)
+    if re.search(
+        r"(?:^|\n|#|\*)\s*u\s*s\s*n\s*e\s*s\s*e\s*n\s*[ií]\b",
+        body[:1500],
+        re.IGNORECASE,
+    ):
+        return "Usnesení"
+
+    forma_yaml = fm.get("forma", "").strip().lower()
+    if "usnesení" in forma_yaml or "usneseni" in forma_yaml:
+        return "Usnesení"
+    return "Rozsudek"
+
+
+def is_rozsudek_only(path: Path, fm: dict[str, str], body: str, min_year: int) -> tuple[bool, str]:
+    """Vrátí (True, 'Rozsudek') pouze pro neprázdné rozsudky."""
+    if len(body.strip()) < 100:
+        return False, "Prázdné"
+
+    forma = detect_forma(fm, body)
+    if forma != "Rozsudek":
+        return False, forma
+
     if min_year > 0:
         rel_parts = path.relative_to(ROOT_DIR).parts
         year_val = 0
@@ -156,9 +169,9 @@ def is_rozsudek_only(path: Path, fm: dict[str, str], body: str, min_year: int) -
             if m:
                 year_val = int(m.group(1))
         if year_val > 0 and year_val < min_year:
-            return False
+            return False, forma
 
-    return True
+    return True, forma
 
 
 def collect_candidate_files() -> list[Path]:
@@ -167,7 +180,9 @@ def collect_candidate_files() -> list[Path]:
     return sorted(JUDIKATURA_DIR.rglob("*.md"))
 
 
-def build_metadata(path: Path, fm: dict[str, str]) -> tuple[str, list[dict[str, str]]]:
+def build_metadata(
+    path: Path, fm: dict[str, str], resolved_forma: str
+) -> tuple[str, list[dict[str, str]]]:
     rel = path.relative_to(ROOT_DIR).as_posix()
     parts = rel.split("/")
     rejstrik_folder = parts[1].lower() if len(parts) >= 3 else "afs"
@@ -176,7 +191,6 @@ def build_metadata(path: Path, fm: dict[str, str]) -> tuple[str, list[dict[str, 
     spzn = fm.get("spisova_znacka", "").strip() or path.stem.replace("NSS_", "").replace("_", " ")
     ecli = fm.get("ecli", "").strip()
     datum = fm.get("datum_rozhodnuti", "").strip()
-    forma = fm.get("forma", "Rozsudek").strip()
     rejstrik = fm.get("rejstrik", rejstrik_folder).strip().lower()
 
     rok = fm.get("rok_archivace", "").strip() or year_folder
@@ -186,7 +200,9 @@ def build_metadata(path: Path, fm: dict[str, str]) -> tuple[str, list[dict[str, 
 
     slug = re.sub(r"[^a-z0-9]+", "-", spzn.lower()).strip("-") or path.stem.lower()
     display_name = (
-        f"NSS {spzn} ({forma}, {datum})" if datum else f"NSS {spzn} ({forma})"
+        f"NSS {spzn} ({resolved_forma}, {datum})"
+        if datum
+        else f"NSS {spzn} ({resolved_forma})"
     )
 
     raw_meta: dict[str, str] = {
@@ -197,7 +213,7 @@ def build_metadata(path: Path, fm: dict[str, str]) -> tuple[str, list[dict[str, 
         "authority": DEFAULT_AUTHORITY,
         "spisova_znacka": spzn,
         "ecli": ecli,
-        "forma": forma,
+        "forma": resolved_forma,
         "rok": rok,
         "datum_rozhodnuti": datum,
         "rel_path": rel,
@@ -228,7 +244,8 @@ def delete_remote_document(client: genai.Client, doc_name: str) -> None:
             config={"force": True},
         )
     except Exception as exc:
-        print(f"  Varování: nepodařilo se smazat {doc_name}: {exc}")
+        if "404" not in str(exc) and "NOT_FOUND" not in str(exc):
+            print(f"  Varování: nepodařilo se smazat {doc_name}: {exc}")
 
 
 def upload_document(
@@ -238,7 +255,6 @@ def upload_document(
     display_name: str,
     custom_metadata: list[dict[str, str]],
 ) -> str:
-    # Kopie celého souboru pod čistě ASCII názvem kvůli HTTP hlavičce v google-genai SDK
     suffix = path.suffix.lower() or ".md"
     with tempfile.NamedTemporaryFile(prefix="rag_nss_", suffix=suffix, delete=False) as tmp:
         tmp_path = Path(tmp.name)
@@ -286,7 +302,7 @@ def upload_document(
 
 def main() -> None:
     force_resync = os.getenv("FORCE_RESYNC", "").lower() in {"1", "true", "yes"}
-    max_uploads = int(os.getenv("MAX_UPLOADS", "200") or "200")
+    max_uploads = int(os.getenv("MAX_UPLOADS", "250") or "250")
     env_year = os.getenv("MIN_YEAR", "").strip()
     min_year = int(env_year) if env_year.isdigit() and int(env_year) > 0 else DEFAULT_MIN_YEAR
 
@@ -296,43 +312,47 @@ def main() -> None:
     state["store_name"] = store_name
     state["store_display_name"] = STORE_DISPLAY_NAME
 
-    # 1. Výběr pouze rozsudků (celé texty, bez usnesení)
-    eligible_items: list[tuple[Path, dict[str, str]]] = []
+    eligible_items: list[tuple[Path, dict[str, str], str]] = []
     excluded_count = 0
     for path in collect_candidate_files():
         raw_text = path.read_text("utf-8", errors="replace")
         fm, body = parse_nss_frontmatter(raw_text)
-        if not is_rozsudek_only(path, fm, body, min_year=min_year):
+        ok, resolved_forma = is_rozsudek_only(path, fm, body, min_year=min_year)
+        if not ok:
             excluded_count += 1
             continue
-        eligible_items.append((path, fm))
+        eligible_items.append((path, fm, resolved_forma))
 
-    eligible_rel_paths = {p.relative_to(ROOT_DIR).as_posix() for p, _ in eligible_items}
+    eligible_rel_paths = {p.relative_to(ROOT_DIR).as_posix() for p, _, _ in eligible_items}
     tracked: dict = state.setdefault("files", {})
 
-    # 2. Promazání dříve nahraných usnesení ze Storu i z lokálního indexu
     remote_by_rel, remote_by_title = fetch_existing_remote_docs(client, store_name)
     removed_paths = [rel for rel in list(tracked.keys()) if rel not in eligible_rel_paths]
+    already_deleted: set[str] = set()
+
     for idx, rel in enumerate(removed_paths, 1):
+        doc_name = tracked[rel].get("document_name", "")
         if idx <= 10 or idx % 50 == 0:
             print(f"Odstraňuji z RAG (usnesení / mimo filtr): {rel} [{idx}/{len(removed_paths)}]")
-        delete_remote_document(client, tracked[rel].get("document_name", ""))
+        if doc_name and doc_name not in already_deleted:
+            delete_remote_document(client, doc_name)
+            already_deleted.add(doc_name)
         del tracked[rel]
 
     for rel, doc_name in remote_by_rel.items():
-        if rel not in eligible_rel_paths:
+        if rel not in eligible_rel_paths and doc_name not in already_deleted:
             delete_remote_document(client, doc_name)
+            already_deleted.add(doc_name)
 
     if removed_paths:
         save_state(state)
 
-    # 3. Nahrání chybějících celých rozsudků
     uploaded = 0
     skipped = 0
     adopted = 0
     consecutive_timeouts = 0
 
-    for path, fm in eligible_items:
+    for path, fm, resolved_forma in eligible_items:
         rel = path.relative_to(ROOT_DIR).as_posix()
         digest = sha256_file(path)
         prev = tracked.get(rel)
@@ -341,7 +361,7 @@ def main() -> None:
             skipped += 1
             continue
 
-        display_name, custom_metadata = build_metadata(path, fm)
+        display_name, custom_metadata = build_metadata(path, fm, resolved_forma)
 
         if not prev and not force_resync:
             existing_doc = remote_by_rel.get(rel) or remote_by_title.get(display_name)
