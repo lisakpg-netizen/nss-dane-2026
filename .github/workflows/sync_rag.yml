@@ -13,9 +13,13 @@ on:
         required: false
         default: "250"
       min_year:
-        description: "Indexovat od roku (0 = všechny roky, např. 2018)"
+        description: "Indexovat od roku (0 = všechny roky automaticky)"
         required: false
         default: "0"
+      auto_continue:
+        description: "Automaticky spustit další dávku, dokud nebude hotovo (true/false)"
+        required: false
+        default: "true"
       force_resync:
         description: "Přeindexovat všechny soubory znovu (true/false)"
         required: false
@@ -23,6 +27,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   sync-rag:
@@ -41,12 +46,20 @@ jobs:
         run: pip install --upgrade google-genai
 
       - name: Synchronizace rozhodnutí NSS do Gemini RAG
+        id: sync
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FORCE_RESYNC: ${{ github.event.inputs.force_resync || 'false' }}
           MAX_UPLOADS: ${{ github.event.inputs.max_uploads || '250' }}
           MIN_YEAR: ${{ github.event.inputs.min_year || '0' }}
-        run: python scripts/sync_gemini_rag.py
+        run: |
+          set -o pipefail
+          python scripts/sync_gemini_rag.py | tee sync.log
+          if grep -q "Dosažen limit dávky" sync.log; then
+            echo "has_more=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_more=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Uložení stavu indexu do repozitáře
         if: always()
@@ -61,3 +74,14 @@ jobs:
               git push origin main
             fi
           fi
+
+      - name: Spustit další dávku automaticky
+        if: steps.sync.outputs.has_more == 'true' && github.event.inputs.auto_continue != 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          sleep 15
+          gh workflow run sync_rag.yml \
+            -f max_uploads="${{ github.event.inputs.max_uploads || '250' }}" \
+            -f min_year="${{ github.event.inputs.min_year || '0' }}" \
+            -f auto_continue="true"
