@@ -9126,6 +9126,26 @@
       "sha256": "6185447aa65483ea2b993d105148ae599b5210226bd541d5a11b6aa5ee65a2f8",
       "display_name": "NSS 2 Afs 64/2012 - 48 (Rozsudek, 12.04.2013)",
       "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-2afs64201248-rozsudek-1-1i1o8a2aycsv"
+    },
+    "judikatura/Afs/2013/NSS_2_Afs_65_2012_-_64.md": {
+      "sha256": "1994d44b48e198b2a7b0c803a8b29488eaca80bcf20923de8c3b5bd2b5337c50",
+      "display_name": "NSS 2 Afs 65/2012 - 64 (Rozsudek, 25.02.2013)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-2afs65201264-rozsudek-2-nxqtb9tfpirr"
+    },
+    "judikatura/Afs/2013/NSS_2_Afs_66_2012_-_38.md": {
+      "sha256": "b34f548ab25761e118a1307485976e99f8004eed6f29c3b464e708fb83a02073",
+      "display_name": "NSS 2 Afs 66/2012 - 38 (Rozsudek, 24.07.2013)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-2afs66201238-rozsudek-2-e9lhzjw7sq7m"
+    },
+    "judikatura/Afs/2013/NSS_2_Afs_66_2013_-_39.md": {
+      "sha256": "6278b71175f47b1746c30a2512cf630d4bb9c498311879e5bd1d6627d0cd3342",
+      "display_name": "NSS 2 Afs 66/2013 - 39 (Rozsudek, 07.10.2013)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-2afs66201339-rozsudek-0-uw1ts6dewtuc"
+    },
+    "judikatura/Afs/2013/NSS_2_Afs_68_2013_-_38.md": {
+      "sha256": "8b1a0bd7be54edb12428e2b1d317414de186023d4545c2b3cab810e52a4b58fa",
+      "display_name": "NSS 2 Afs 68/2013 - 38 (Rozsudek, 07.10.2013)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-2afs68201338-rozsudek-0-nhmkm4dvywnc"
     }
   }
 }
