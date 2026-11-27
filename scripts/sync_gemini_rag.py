@@ -16,6 +16,9 @@ SOURCE_REPO = "nss"
 DEFAULT_DOC_TYPE = "Judikatura"
 DEFAULT_AUTHORITY = "binding"
 
+# 0 = indexovat všechny ročníky rozsudků v repozitáři (lze přepsat přes proměnnou MIN_YEAR)
+DEFAULT_MIN_YEAR = 0
+
 ROOT_DIR = Path(__file__).resolve().parent.parent
 JUDIKATURA_DIR = ROOT_DIR / "judikatura"
 STATE_FILE = ROOT_DIR / "registry" / "rag_index.json"
@@ -94,7 +97,6 @@ def fetch_existing_remote_docs(
 
 
 def parse_nss_frontmatter(text: str) -> tuple[dict[str, str], str]:
-    """Vyčte metadata z YAML hlavičky a vrátí (metadata, čistý text rozhodnutí)."""
     if not text.startswith("---"):
         return {}, text
     lines = text.splitlines()
@@ -120,18 +122,49 @@ def parse_nss_frontmatter(text: str) -> tuple[dict[str, str], str]:
     return meta, body
 
 
-def collect_files(min_year: int = 0) -> list[Path]:
+def is_rozsudek_only(path: Path, fm: dict[str, str], body: str, min_year: int) -> bool:
+    """Vrátí True pouze pro neprázdné rozsudky (vyřadí veškerá usnesení)."""
+    if len(body.strip()) < 100:
+        return False
+
+    # 1. Kontrola formy v YAML hlavičce
+    forma = fm.get("forma", "").strip().lower()
+    if "usnesení" in forma or "usneseni" in forma:
+        return False
+
+    # 2. Pojistka podle nadpisu v záhlaví textu (pro případy, kdy YAML forma chybí)
+    if re.search(
+        r"(?:^|\n)\s*(?:#+\s*)?u\s*s\s*n\s*e\s*s\s*e\s*n\s*[íi]\b",
+        body[:2500],
+        re.IGNORECASE,
+    ):
+        return False
+
+    # 3. Volitelný filtr podle roku (výchozí 0 = všechny roky)
+    if min_year > 0:
+        rel_parts = path.relative_to(ROOT_DIR).parts
+        year_val = 0
+        if len(rel_parts) >= 4 and rel_parts[2].isdigit():
+            year_val = int(rel_parts[2])
+        elif fm.get("rok_archivace", "").isdigit():
+            year_val = int(fm["rok_archivace"])
+        else:
+            m = re.search(
+                r"\b(20\d{2})\b",
+                fm.get("datum_rozhodnuti", "") + " " + fm.get("spisova_znacka", ""),
+            )
+            if m:
+                year_val = int(m.group(1))
+        if year_val > 0 and year_val < min_year:
+            return False
+
+    return True
+
+
+def collect_candidate_files() -> list[Path]:
     if not JUDIKATURA_DIR.exists():
         return []
-    files: list[Path] = []
-    for path in sorted(JUDIKATURA_DIR.rglob("*.md")):
-        if min_year > 0:
-            rel_parts = path.relative_to(ROOT_DIR).parts
-            if len(rel_parts) >= 4 and rel_parts[2].isdigit():
-                if int(rel_parts[2]) < min_year:
-                    continue
-        files.append(path)
-    return files
+    return sorted(JUDIKATURA_DIR.rglob("*.md"))
 
 
 def build_metadata(path: Path, fm: dict[str, str]) -> tuple[str, list[dict[str, str]]]:
@@ -205,6 +238,7 @@ def upload_document(
     display_name: str,
     custom_metadata: list[dict[str, str]],
 ) -> str:
+    # Kopie celého souboru pod čistě ASCII názvem kvůli HTTP hlavičce v google-genai SDK
     suffix = path.suffix.lower() or ".md"
     with tempfile.NamedTemporaryFile(prefix="rag_nss_", suffix=suffix, delete=False) as tmp:
         tmp_path = Path(tmp.name)
@@ -252,8 +286,9 @@ def upload_document(
 
 def main() -> None:
     force_resync = os.getenv("FORCE_RESYNC", "").lower() in {"1", "true", "yes"}
-    max_uploads = int(os.getenv("MAX_UPLOADS", "250") or "250")
-    min_year = int(os.getenv("MIN_YEAR", "0") or "0")
+    max_uploads = int(os.getenv("MAX_UPLOADS", "200") or "200")
+    env_year = os.getenv("MIN_YEAR", "").strip()
+    min_year = int(env_year) if env_year.isdigit() and int(env_year) > 0 else DEFAULT_MIN_YEAR
 
     client = get_client()
     state = load_state()
@@ -261,40 +296,49 @@ def main() -> None:
     state["store_name"] = store_name
     state["store_display_name"] = STORE_DISPLAY_NAME
 
-    files = collect_files(min_year=min_year)
-    current_rel_paths = {p.relative_to(ROOT_DIR).as_posix() for p in files}
+    # 1. Výběr pouze rozsudků (celé texty, bez usnesení)
+    eligible_items: list[tuple[Path, dict[str, str]]] = []
+    excluded_count = 0
+    for path in collect_candidate_files():
+        raw_text = path.read_text("utf-8", errors="replace")
+        fm, body = parse_nss_frontmatter(raw_text)
+        if not is_rozsudek_only(path, fm, body, min_year=min_year):
+            excluded_count += 1
+            continue
+        eligible_items.append((path, fm))
+
+    eligible_rel_paths = {p.relative_to(ROOT_DIR).as_posix() for p, _ in eligible_items}
     tracked: dict = state.setdefault("files", {})
 
-    remote_by_rel: dict[str, str] = {}
-    remote_by_title: dict[str, str] = {}
-    if not force_resync and len(tracked) < len(files):
-        remote_by_rel, remote_by_title = fetch_existing_remote_docs(client, store_name)
-
-    removed_paths = [rel for rel in list(tracked.keys()) if rel not in current_rel_paths]
-    for rel in removed_paths:
-        print(f"Mažu odstraněné rozhodnutí z RAG: {rel}")
+    # 2. Promazání dříve nahraných usnesení ze Storu i z lokálního indexu
+    remote_by_rel, remote_by_title = fetch_existing_remote_docs(client, store_name)
+    removed_paths = [rel for rel in list(tracked.keys()) if rel not in eligible_rel_paths]
+    for idx, rel in enumerate(removed_paths, 1):
+        if idx <= 10 or idx % 50 == 0:
+            print(f"Odstraňuji z RAG (usnesení / mimo filtr): {rel} [{idx}/{len(removed_paths)}]")
         delete_remote_document(client, tracked[rel].get("document_name", ""))
         del tracked[rel]
 
+    for rel, doc_name in remote_by_rel.items():
+        if rel not in eligible_rel_paths:
+            delete_remote_document(client, doc_name)
+
+    if removed_paths:
+        save_state(state)
+
+    # 3. Nahrání chybějících celých rozsudků
     uploaded = 0
     skipped = 0
     adopted = 0
-    empty_skipped = 0
     consecutive_timeouts = 0
 
-    for path in files:
+    for path, fm in eligible_items:
         rel = path.relative_to(ROOT_DIR).as_posix()
         digest = sha256_file(path)
         prev = tracked.get(rel)
 
         if not force_resync and prev and prev.get("sha256") == digest and prev.get("document_name"):
             skipped += 1
-            continue
-
-        raw_text = path.read_text("utf-8", errors="replace")
-        fm, body = parse_nss_frontmatter(raw_text)
-        if len(body.strip()) < 30:
-            empty_skipped += 1
             continue
 
         display_name, custom_metadata = build_metadata(path, fm)
@@ -317,7 +361,7 @@ def main() -> None:
         if prev and prev.get("document_name"):
             delete_remote_document(client, prev["document_name"])
 
-        print(f"[{uploaded + 1}] Indexuji: {rel} -> '{display_name}'")
+        print(f"[{uploaded + 1}] Indexuji celý rozsudek: {rel} -> '{display_name}'")
         try:
             doc_name = upload_document(client, store_name, path, display_name, custom_metadata)
             consecutive_timeouts = 0
@@ -325,7 +369,7 @@ def main() -> None:
             consecutive_timeouts += 1
             print(f"  ⏳ Timeout ({consecutive_timeouts}/3): {exc}")
             if consecutive_timeouts >= 3:
-                print("  ⚠️ Google indexovací fronta je přetížená – ukládám dosavadní postup a končím dávku.")
+                print("  ⚠️ Google indexovací fronta je přetížená – ukládám dosavadní postup.")
                 break
             time.sleep(15)
             continue
@@ -334,7 +378,7 @@ def main() -> None:
             if "RESOURCE_EXHAUSTED" in msg or "quota" in msg.lower() or "storage" in msg.lower():
                 print(f"  🛑 Dosažen limit kapacity nebo kvóty Google File Search: {exc}")
                 break
-            print(f"  ❌ Přeskakuji soubor {rel} kvůli chybě: {exc}")
+            print(f"  ❌ Přeskakuji {rel}: {exc}")
             continue
 
         tracked[rel] = {
@@ -350,10 +394,9 @@ def main() -> None:
 
     save_state(state)
     print(
-        f"Hotovo | Store: {store_name} ({STORE_DISPLAY_NAME}) | "
-        f"Nahráno v dávce: {uploaded} | Převzato ze Storu: {adopted} | "
-        f"Přeskočeno beze změny: {skipped} | Prázdné: {empty_skipped} | "
-        f"Celkem v indexu: {len(tracked)}"
+        f"Hotovo | Vyřazeno usnesení: {excluded_count} | Smazáno ze Storu: {len(removed_paths)} | "
+        f"Převzato ze Storu: {adopted} | Nahráno v dávce: {uploaded} | "
+        f"Beze změny: {skipped} | Celkem rozsudků v RAG: {len(tracked)}"
     )
 
 
