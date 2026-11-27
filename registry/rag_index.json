@@ -2501,6 +2501,1501 @@
       "sha256": "3a2c87692cced9daf59249fcc23cf4f9f37b442987dc1a1d195ab23e8f3d2969",
       "display_name": "NSS 5 Afs 49/2009 - 58 (Rozsudek, 30.04.2010)",
       "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs49200958-rozsudek-3-9kj73z8hgshm"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_49_2010_-_54.md": {
+      "sha256": "60a57ed63a8f5c87059ec088788d197738732752fe069cc5880b015b6d5df870",
+      "display_name": "NSS 5 Afs 49/2010 - 54 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs49201054-rozsudek-1-czlkc46fqwq1"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_50_2010_-_138.md": {
+      "sha256": "db850262d2e64e55de423d6b68effc23934c9248db3282bc1a75654d4eb9246e",
+      "display_name": "NSS 5 Afs 50/2010 - 138 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs502010138-rozsudek--dx150pyewxsj"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_51_2009_-_56.md": {
+      "sha256": "3b42cd5093ed7cf2a279e55611696981fcf88dfdb2de27bbd30a46c6c6522f8a",
+      "display_name": "NSS 5 Afs 51/2009 - 56 (Rozsudek, 30.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs51200956-rozsudek-3-pn8qa6nfydpu"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_51_2010_-_107.md": {
+      "sha256": "7dcd289c3bda564dbbb585a1a6a0e0d136e0ab00e0c826b724d6c13421c9dd7e",
+      "display_name": "NSS 5 Afs 51/2010 - 107 (Rozsudek, 14.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs512010107-rozsudek--zu9hsroeg3ey"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_52_2009_-_56.md": {
+      "sha256": "39c63195ff94d10ff6e0220777429ed67c8b2fac48b50d00598e213e1948506c",
+      "display_name": "NSS 5 Afs 52/2009 - 56 (Rozsudek, 30.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs52200956-rozsudek-3-jisfr49n4zhg"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_54_2010_-_78.md": {
+      "sha256": "44f3abedc3732d4a10be013f563052225e8bb652f43dd170883680b06ac8c584",
+      "display_name": "NSS 5 Afs 54/2010 - 78 (Rozsudek, 23.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs54201078-rozsudek-2-ifow8bfkhfe7"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_55_2010_-_92.md": {
+      "sha256": "f2b13bb2b5f587ae9b7ea0d3af67ea34cce794e272dd8baeef612072040a30fa",
+      "display_name": "NSS 5 Afs 55/2010 - 92 (Rozsudek, 22.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs55201092-rozsudek-2-qw6u912u7rfe"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_56_2010_-_90.md": {
+      "sha256": "57cf04e6d89c3dc2dba3e9eed78c66b05557062a34b078a6b29702bf2829b5b2",
+      "display_name": "NSS 5 Afs 56/2010 - 90 (Rozsudek, 14.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs56201090-rozsudek-1-c1u10al9kcag"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_57_2009_-_123.md": {
+      "sha256": "fcd930dd5455a9a4fde237dc5c733a116ee014135db925277aebba64cf4b16a4",
+      "display_name": "NSS 5 Afs 57/2009 - 123 (Rozsudek, 10.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs572009123-rozsudek--g48wioxs4sqy"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_57_2010_-_83.md": {
+      "sha256": "f707e6a18b310dc48999a17bb66922eedbf690e0e68c7401e017a69a4b277d2b",
+      "display_name": "NSS 5 Afs 57/2010 - 83 (Rozsudek, 15.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs57201083-rozsudek-1-omhti9wpnm7f"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_58_2010_-_23.md": {
+      "sha256": "b628f7b8ceeb121d0d39f1cede422da7ed5b72eb4aac7925fb25fab4330001d8",
+      "display_name": "NSS 5 Afs 58/2010 - 23 (Rozsudek, 25.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs58201023-rozsudek-2-7jvdcxkxxps3"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_59_2009_-_115.md": {
+      "sha256": "e18b2d20f920ca3fd10b3075bce0d2e303e0392e666a23debd6319c7f4e0d01f",
+      "display_name": "NSS 5 Afs 59/2009 - 115 (Rozsudek, 26.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs592009115-rozsudek--eu3eh1z0tabe"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_60_2009_-_176.md": {
+      "sha256": "3cab468bd9becd5d0309170cdad6e6d926c5b353b96c9ef11cfed6846410fe9f",
+      "display_name": "NSS 5 Afs 60/2009 - 176 (Rozsudek, 27.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs602009176-rozsudek--hc1uq4h47v84"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_62_2009_-_282.md": {
+      "sha256": "eda14af15774551a92ee53d73b144d828aa04500a43aa400b01848ff52d78662",
+      "display_name": "NSS 5 Afs 62/2009 - 282 (Rozsudek, 30.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs622009282-rozsudek--hncwoy7z766k"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_63_2009_-_98.md": {
+      "sha256": "1dc273c39c30203b9b3fb06df17e7e80f581f7ca6c96b4aea33d5761ea525220",
+      "display_name": "NSS 5 Afs 63/2009 - 98 (Rozsudek, 25.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs63200998-rozsudek-2-woipj643k010"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_64_2009_-_104.md": {
+      "sha256": "ed27943546d3bd3cf9870f0a3b1bdce71b74a7f18c891616682180d9da234a45",
+      "display_name": "NSS 5 Afs 64/2009 - 104 (Rozsudek, 22.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs642009104-rozsudek--t4nixj6fd8xt"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_65_2009_-_128.md": {
+      "sha256": "05149e198850c4a1c034880426f962d8325efad41375885e68eb8fe4e0ce3229",
+      "display_name": "NSS 5 Afs 65/2009 - 128 (Rozsudek, 17.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs652009128-rozsudek--69asc320m22p"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_68_2009_-_113.md": {
+      "sha256": "43f04ff8d673be9109e95b621df3e93155dcc6b339b8f6387a7bb125525ab1d0",
+      "display_name": "NSS 5 Afs 68/2009 - 113 (Rozsudek, 01.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs682009113-rozsudek--ot78w68as3nn"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_69_2009_-_218.md": {
+      "sha256": "5407e9df549c785812b7ffdf1d8648565eedd4192c1abe739b16ebb58afe8927",
+      "display_name": "NSS 5 Afs 69/2009 - 218 (Rozsudek, 31.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs692009218-rozsudek--0698zbiqlqz2"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_70_2009_-_229.md": {
+      "sha256": "159144cf1459ff1de52d2455e26b9fc85ac423380818e3a022d55c2ab0e66537",
+      "display_name": "NSS 5 Afs 70/2009 - 229 (Rozsudek, 31.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs702009229-rozsudek--m13rhfnt8it7"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_71_2009_-_48.md": {
+      "sha256": "741cce54cc16d1d2901b4088bf7269ff5de10d31e1b7fa5e9d574ddd2034d7af",
+      "display_name": "NSS 5 Afs 71/2009 - 48 (Rozsudek, 26.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs71200948-rozsudek-2-v374gqbmofmk"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_72_2010_-_52.md": {
+      "sha256": "686104a8e29a6982d2f1a6bb1c1d2d30a33ba193716f350737f08a55bf73a0db",
+      "display_name": "NSS 5 Afs 72/2010 - 52 (Rozsudek, 16.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs72201052-rozsudek-1-3yz6wock53x1"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_73_2009_-_63.md": {
+      "sha256": "970f4d31d1757de030e2cd9efdeb78dec66c91b96f0b984dbf17e8453a9a4b10",
+      "display_name": "NSS 5 Afs 73/2009 - 63 (Rozsudek, 23.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs73200963-rozsudek-2-c64bp0aknxrt"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_74_2009_-_111.md": {
+      "sha256": "ef102713d29c33e77a976eb4f053bd1acae6b4bda539b295e8470e13c270b795",
+      "display_name": "NSS 5 Afs 74/2009 - 111 (Rozsudek, 01.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs742009111-rozsudek--9mssslr0hnq0"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_74_2010_-_54.md": {
+      "sha256": "7588fded3bc8ed3999bab9a3fb4c211b14ca646e6d0e976ea9f20165be7346ca",
+      "display_name": "NSS 5 Afs 74/2010 - 54 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs74201054-rozsudek-3-nx1m4289na3w"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_76_2009_-_37.md": {
+      "sha256": "6ae68e157172f53ace7954eb0a20b8cca5456efa03e3cfdffb17a8a9c66a8c07",
+      "display_name": "NSS 5 Afs 76/2009 - 37 (Rozsudek, 17.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs76200937-rozsudek-1-n941cottfac7"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_76_2010_-_226.md": {
+      "sha256": "94461e909fd765bdb4d285a4366166b2e8297833aede60e756b4f91eedfa7574",
+      "display_name": "NSS 5 Afs 76/2010 - 226 (Rozsudek, 16.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs762010226-rozsudek--suwngvyfjmr0"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_77_2009_-_130.md": {
+      "sha256": "0855e476e0126e6a2a3becb6b61448c6ef0acbdf53dfe91ad2af03be73e53d04",
+      "display_name": "NSS 5 Afs 77/2009 - 130 (Rozsudek, 30.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs772009130-rozsudek--n66c5vvwict6"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_78_2009_-_100.md": {
+      "sha256": "cade7d2eaf5352de035172254b50bc1c52213701559eccf11ca50aae8b548e29",
+      "display_name": "NSS 5 Afs 78/2009 - 100 (Rozsudek, 29.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs782009100-rozsudek--6ctlatv0g2mr"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_79_2009_-_134.md": {
+      "sha256": "54a9fc3e24bb68715ccf864893d6c157a0fda8ea775e0addeb797903eee6b5d5",
+      "display_name": "NSS 5 Afs 79/2009 - 134 (Rozsudek, 29.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs792009134-rozsudek--f45tw1qqf06s"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_7_2009_-_89.md": {
+      "sha256": "d0c77fae13b024017fc5be00bc0ab52ef5dd21f4245e12d016530ecc6efd6469",
+      "display_name": "NSS 5 Afs 7/2009 - 89 (Rozsudek, 12.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs7200989-rozsudek-12-w3ddvejmpg09"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_82_2009_-_63.md": {
+      "sha256": "cd7d19b463d7465e043d51e47a9dcb293283d03a3a51d52ee8dce0a8ed240976",
+      "display_name": "NSS 5 Afs 82/2009 - 63 (Rozsudek, 10.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs82200963-rozsudek-1-usyhd202in25"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_82_2010_-_63.md": {
+      "sha256": "e7e5488a35f77c4e09886e755b14745bf6bfb7ffb1d7c9862d5e77bede3c4784",
+      "display_name": "NSS 5 Afs 82/2010 - 63 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs82201063-rozsudek-3-bpktz8ukl893"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_83_2009_-_123.md": {
+      "sha256": "8bc3050e39732e831c1938842a71a067d5a8fab1ea51e55d94e664cd6bdf860a",
+      "display_name": "NSS 5 Afs 83/2009 - 123 (Rozsudek, 27.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs832009123-rozsudek--m7zu2eg7xf3n"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_83_2010_-_65.md": {
+      "sha256": "58f5c7f91547f9ec23f43466dbc5ddd0abc999f46df0d08faea5fa8ca16dc8d4",
+      "display_name": "NSS 5 Afs 83/2010 - 65 (Rozsudek, 09.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs83201065-rozsudek-0-slxsa7sog92i"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_84_2009_-_64.md": {
+      "sha256": "28498c79f7a90140156aff1b5da0fbd2c825e2d825574af4e3c8cb15e2cb613e",
+      "display_name": "NSS 5 Afs 84/2009 - 64 (Rozsudek, 30.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs84200964-rozsudek-3-2bv2srq87b7b"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_84_2010_-_77.md": {
+      "sha256": "66cb627def3c5e79f72d9c0dc2507b83ee903c3321b8f5a71de2a015faac40c0",
+      "display_name": "NSS 5 Afs 84/2010 - 77 (Rozsudek, 13.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs84201077-rozsudek-1-96hu2rlz0246"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_85_2009_-_67.md": {
+      "sha256": "997886bd1facf8fbcad23b5d34a410237a1e6cc0cd96b3cfd584f0ac528667c7",
+      "display_name": "NSS 5 Afs 85/2009 - 67 (Rozsudek, 16.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs85200967-rozsudek-1-l9rrqgv9zqw2"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_85_2010_-_68.md": {
+      "sha256": "e32d9abc8e8889f4a723dad9ca11afcdd2e1b4ca26ea43722644eb7963ee4e6a",
+      "display_name": "NSS 5 Afs 85/2010 - 68 (Rozsudek, 09.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs85201068-rozsudek-0-msm36mfrjr46"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_86_2010_-_63.md": {
+      "sha256": "bbbc55934f5eb94c359dff489f25077322ecc71e98ddfe51ef812ccd6f2eb3c3",
+      "display_name": "NSS 5 Afs 86/2010 - 63 (Rozsudek, 13.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs86201063-rozsudek-1-0c4ids66zl0n"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_87_2009_-_54.md": {
+      "sha256": "abbfb2923dedba70ff83306045760cdb4a7285699e3469925b66a1437b31c9bc",
+      "display_name": "NSS 5 Afs 87/2009 - 54 (Rozsudek, 27.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs87200954-rozsudek-2-372w2ojzn4tw"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_88_2009_-_133.md": {
+      "sha256": "91f3a8c464077c129a74352831adb197cf11ae1c0a5e1fbba2b68b5f7b173aff",
+      "display_name": "NSS 5 Afs 88/2009 - 133 (Rozsudek, 24.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs882009133-rozsudek--gum7igknbdpw"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_89_2009_-_120.md": {
+      "sha256": "2f8cdda504d0dd07f1a7fec4d9f9da0a0d46184b17b448702921690e1c3e11eb",
+      "display_name": "NSS 5 Afs 89/2009 - 120 (Rozsudek, 28.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs892009120-rozsudek--58heh5rnyeqy"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_8_2010_-_138.md": {
+      "sha256": "8c6f7a679756e0f288f8df472fd50d74186f142c9f0e89323c5d6fdb34e463fd",
+      "display_name": "NSS 5 Afs 8/2010 - 138 (Rozsudek, 18.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs82010138-rozsudek-1-hqcsn4dvmh0m"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_91_2009_-_123.md": {
+      "sha256": "71ebc02c7832a43400c011d7bc4c54ea010b361630c797e7d53dea7f4c76ba25",
+      "display_name": "NSS 5 Afs 91/2009 - 123 (Rozsudek, 25.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs912009123-rozsudek--04rwxbb9jsx0"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_92_2008_-_175.md": {
+      "sha256": "e2e370614f444ed483cdc510a70856f4025502aae40474410d9887e94af32816",
+      "display_name": "NSS 5 Afs 92/2008 - 175 (Rozsudek, 02.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs922008175-rozsudek--uq7wj2m0j08t"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_92_2009_-_64.md": {
+      "sha256": "5e201f767dd3a38f0c0d1c62d6fdcbee7360251b7a7770643ea3fe71e80f3932",
+      "display_name": "NSS 5 Afs 92/2009 - 64 (Rozsudek, 19.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs92200964-rozsudek-1-9n56ggr538wn"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_93_2009_-_55.md": {
+      "sha256": "045c43559c7d1600ce0a38dc0dd5ee672d7ac53e443876264dfd87311892dd33",
+      "display_name": "NSS 5 Afs 93/2009 - 55 (Rozsudek, 27.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs93200955-rozsudek-2-2wq06e1m1ahu"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_94_2009_-_56.md": {
+      "sha256": "a80f93d5089342f1252314bde2fb0828d0c57c064d46e337885f4a2b70591fd6",
+      "display_name": "NSS 5 Afs 94/2009 - 56 (Rozsudek, 27.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs94200956-rozsudek-2-jhn4g2kccp3c"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_96_2009_-_71.md": {
+      "sha256": "d671d3ae5e339c098b9e6329638540e6e5c69a9fcec594f9a23ffcd34ac10842",
+      "display_name": "NSS 5 Afs 96/2009 - 71 (Rozsudek, 23.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs96200971-rozsudek-2-e0iz2hmolh97"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_99_2009_-_97.md": {
+      "sha256": "914b80ec96e9ffa29e8ae0b851f557bdbd9e4de398211cd8c88b4a6108674526",
+      "display_name": "NSS 5 Afs 99/2009 - 97 (Rozsudek, 29.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs99200997-rozsudek-2-st7yollnv90f"
+    },
+    "judikatura/Afs/2010/NSS_5_Afs_9_2010_-_93.md": {
+      "sha256": "97a77326bdd313d62cad28ade6a109a36b6c49ce44f0f2fa1b4cfd47695f82fb",
+      "display_name": "NSS 5 Afs 9/2010 - 93 (Rozsudek, 30.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-5afs9201093-rozsudek-30-uusxggxs64eh"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_103_2009_-_95.md": {
+      "sha256": "02e23e2c8c1ee1f8337efd3622d5a46bf16ee4bb06a0516eb01325ff41e7ed9f",
+      "display_name": "NSS 7 Afs 103/2009 - 95 (Rozsudek, 31.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs103200995-rozsudek--ryxbwr7krqwf"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_10_2010_-_132.md": {
+      "sha256": "426fd04115f8f17e52c96daa5cafcbe7635b727c36819f0a20b13ca8b83e45c2",
+      "display_name": "NSS 7 Afs 10/2010 - 132 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs102010132-rozsudek--jngzrziywwe6"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_113_2009_-_53.md": {
+      "sha256": "73e475d951fb1aaee54467b97b07ea8fa4cfe00ee810f6681fc9869bf5e3c1f8",
+      "display_name": "NSS 7 Afs 113/2009 - 53 (Rozsudek, 14.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs113200953-rozsudek--373x3yvqjqop"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_11_2009_-_97.md": {
+      "sha256": "d3b4a9a773e737c897049188791649337eb16695400e129ab56b6e2fb5d2953b",
+      "display_name": "NSS 7 Afs 11/2009 - 97 (Rozsudek, 04.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs11200997-rozsudek-0-phi3eygahpl4"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_11_2010_-_133.md": {
+      "sha256": "50b0f4687977adfaa34379a216ea79c6e1e7adda2121d5478f3bf546117ea48d",
+      "display_name": "NSS 7 Afs 11/2010 - 133 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs112010133-rozsudek--fom3bit1tori"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_121_2009_-_59.md": {
+      "sha256": "cdf5925dd9acaa4a842304170d6548e6fac14f961408c156ba91da6ad4646bff",
+      "display_name": "NSS 7 Afs 121/2009 - 59 (Rozsudek, 18.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs121200959-rozsudek--fbtuz1ceycig"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_12_2010_-_172.md": {
+      "sha256": "7b124f173acc1a7b2f9b28669d84c6465a13415431a1bfc6dc82d5d537112af6",
+      "display_name": "NSS 7 Afs 12/2010 - 172 (Rozsudek, 19.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs122010172-rozsudek--kg6tzg6a9dgx"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_130_2009_-_200.md": {
+      "sha256": "2e6709f5c86f07c57d5c4888a8b6ea6ee88b68412b3600733355f179aa5ef24c",
+      "display_name": "NSS 7 Afs 130/2009 - 200 (Rozsudek, 02.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs1302009200-rozsudek-0bazgfy1n17x"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_131_2009_-_95.md": {
+      "sha256": "9baed4800e98b5215fa8f2d44e8c5fdf7e846fb331959beac5b689176292a3a5",
+      "display_name": "NSS 7 Afs 131/2009 - 95 (Rozsudek, 15.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs131200995-rozsudek--wh8tx2jnk3xz"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_132_2009_-_83.md": {
+      "sha256": "c07462c28d420751d21a5bfc28f877bf5748faf5f3ff88c0960582e4c2490e38",
+      "display_name": "NSS 7 Afs 132/2009 - 83 (Rozsudek, 31.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs132200983-rozsudek--5do1ywfqpvj2"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_13_2010_-_149.md": {
+      "sha256": "ffca1b88d407b0e9344295d3c9ef6d48410dd728ae23ed60804be3c50b03c025",
+      "display_name": "NSS 7 Afs 13/2010 - 149 (Rozsudek, 11.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs132010149-rozsudek--x9g4rqgbyywa"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_15_2007_-_106.md": {
+      "sha256": "6fe80a880838a61c07a9b790a9493343e47362ec7d8706bd5f27388572fc8e4f",
+      "display_name": "NSS 7 Afs 15/2007 - 106 (Rozsudek, 04.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs152007106-rozsudek--qrln5q263r2n"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_15_2009_-_159.md": {
+      "sha256": "fe3da1233c20442963d43e4ef86f660fd114b2e523e8fa1b5cec77b4712d31c2",
+      "display_name": "NSS 7 Afs 15/2009 - 159 (Rozsudek, 27.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs152009159-rozsudek--jauv9mbrwm2m"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_15_2010_-_89.md": {
+      "sha256": "c59ae5dae71390c4facc8cdef46f36039c7b5194d6335c8b7829e65c82e7d056",
+      "display_name": "NSS 7 Afs 15/2010 - 89 (Rozsudek, 15.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs15201089-rozsudek-1-s6xcb69wrfqc"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_16_2010_-_84.md": {
+      "sha256": "dabdb4e09f8f05ecb7b08d54ba9b08ce505b6718fc721d000accae05ae9b59e5",
+      "display_name": "NSS 7 Afs 16/2010 - 84 (Rozsudek, 15.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs16201084-rozsudek-1-pt2s5l2qu6eh"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_17_2010_-_106.md": {
+      "sha256": "569e1c29d8e3bc0160c022eacd6e1ee650435c958ab7419be02329cc54ec2f05",
+      "display_name": "NSS 7 Afs 17/2010 - 106 (Rozsudek, 29.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs172010106-rozsudek--vzlkbktkt1t5"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_18_2010_-_131.md": {
+      "sha256": "23643049535d3e505462738c713cab4d6ad8c604819918c4fd3c110cadf3269a",
+      "display_name": "NSS 7 Afs 18/2010 - 131 (Rozsudek, 07.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs182010131-rozsudek--4hy1zxs2iir8"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_19_2010_-_129.md": {
+      "sha256": "8910a4bce7efb211cc141092893f7bb50eeafc34bbb373c7b12309cb7641b24f",
+      "display_name": "NSS 7 Afs 19/2010 - 129 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs192010129-rozsudek--31gh9mw4jozy"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_1_2010_-_53.md": {
+      "sha256": "55ea45b74ca38026147249d4dbe6d1dbb6d88418fc486e8273a28fc0e3f1b5e6",
+      "display_name": "NSS 7 Afs 1/2010 - 53 (Rozsudek, 04.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs1201053-rozsudek-04-30uqls1c53rm"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_20_2007_-_89.md": {
+      "sha256": "bd93f9701f7da09e1ec0750a0e4a5a346b7b87e6b0cdbb547b19693c70ef22a0",
+      "display_name": "NSS 7 Afs 20/2007 - 89 (Rozsudek, 22.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs20200789-rozsudek-2-v9cakrkspvnb"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_20_2010_-_133.md": {
+      "sha256": "4e27c4e479e727b7d7a92382bc32859a8ff50a7f4565d7cbbcb114c3fed1ac37",
+      "display_name": "NSS 7 Afs 20/2010 - 133 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs202010133-rozsudek--4kzuyhlw8p8f"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_21_2010_-_131.md": {
+      "sha256": "74e54cabc2fd6ddb145392110a41adb33e2edb23f600bf072220938df8b07046",
+      "display_name": "NSS 7 Afs 21/2010 - 131 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs212010131-rozsudek--rxx815z71ga0"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_22_2010_-_131.md": {
+      "sha256": "149512c5fefdcc3c472eea94e353a626358c23dc9d1857efa7f75c07103bdae5",
+      "display_name": "NSS 7 Afs 22/2010 - 131 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs222010131-rozsudek--3d3r46syxlyb"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_23_2010_-_131.md": {
+      "sha256": "179b4075ac2753435f453f59b00c04c4dfccc6dab6619ffabae24d537df383d0",
+      "display_name": "NSS 7 Afs 23/2010 - 131 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs232010131-rozsudek--9daupj24rriu"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_24_2007_-_59.md": {
+      "sha256": "197fae55d9297284b28e58d3124c83cce2794e06c2ebb03ab80f0358458dc4e1",
+      "display_name": "NSS 7 Afs 24/2007 - 59 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs24200759-rozsudek-1-bcxtpanjndkw"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_24_2010_-_131.md": {
+      "sha256": "ba5293b683fd3bf86b269925e040558ff441429f2a9a28b71294a81a97c1588a",
+      "display_name": "NSS 7 Afs 24/2010 - 131 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs242010131-rozsudek--whcz0iazbatd"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_25_2010_-_126.md": {
+      "sha256": "3a082549ee2c0f13bf073604d16b0d60093934f2085de525b6563c2c0abf9aac",
+      "display_name": "NSS 7 Afs 25/2010 - 126 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs252010126-rozsudek--g02lcp48do6q"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_26_2010_-_132.md": {
+      "sha256": "4c967ed59bf0fc63a3522faf9fd028558f62a6176cdb2ba5e2e6e42e33f62493",
+      "display_name": "NSS 7 Afs 26/2010 - 132 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs262010132-rozsudek--9oozqcbdixve"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_27_2010_-_131.md": {
+      "sha256": "28f80f679d3039deb82ff8524fee71efd0effb626e546550a266d5c244a4c174",
+      "display_name": "NSS 7 Afs 27/2010 - 131 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs272010131-rozsudek--saez8kbst8e3"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_28_2010_-_131.md": {
+      "sha256": "e8b8a6a2247b5d33bc654cfcce49856fc12ec23147c6c8c9fe57117a33df3439",
+      "display_name": "NSS 7 Afs 28/2010 - 131 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs282010131-rozsudek--z87j908h4lyf"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_29_2010_-_131.md": {
+      "sha256": "1d3e909c0d5545d8e762303dca70549ee09f19c8751086ee4c5d19865c1f36a9",
+      "display_name": "NSS 7 Afs 29/2010 - 131 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs292010131-rozsudek--07ny4v4aasxq"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_2_2010_-_97.md": {
+      "sha256": "e77041770351111cd2ef7638da9dda68f3fe87ce8619efc93699bcca2552a2a5",
+      "display_name": "NSS 7 Afs 2/2010 - 97 (Rozsudek, 18.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs2201097-rozsudek-18-t1r0rhp8zhgt"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_30_2010_-_130.md": {
+      "sha256": "2d08c7bb75473ce0bb7f8e676bd501c60d398d3aca15e65db1a19bb25fb249de",
+      "display_name": "NSS 7 Afs 30/2010 - 130 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs302010130-rozsudek--um1oepfggwfz"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_31_2010_-_130.md": {
+      "sha256": "07ac8634fb0e06da69e3c44a140faeda72589111a767dcab73ab212689370177",
+      "display_name": "NSS 7 Afs 31/2010 - 130 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs312010130-rozsudek--593gja4zq25c"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_32_2010_-_130.md": {
+      "sha256": "0dd9de3983f2bd28970a1c64a16782103990576053baa8a44afad13c9d492f35",
+      "display_name": "NSS 7 Afs 32/2010 - 130 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs322010130-rozsudek--7yoj0iscjby0"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_33_2010_-_130.md": {
+      "sha256": "963aee607aba9c48b724b767588bd7511177dd380671c94116f7298ef3abbbf3",
+      "display_name": "NSS 7 Afs 33/2010 - 130 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs332010130-rozsudek--6iatgl9snlmt"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_34_2010_-_133.md": {
+      "sha256": "26a8f8709cceee55a1d336c4f1d5130856d871f07693e3f76c2cdd4b0db37801",
+      "display_name": "NSS 7 Afs 34/2010 - 133 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs342010133-rozsudek--kh0xn86mipp9"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_35_2010_-_133.md": {
+      "sha256": "527fe552573bbf1df927cd5f46b7e1f23480abc7e6c8a51f339d000e4c6a37db",
+      "display_name": "NSS 7 Afs 35/2010 - 133 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs352010133-rozsudek--azvtsheo1muw"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_36_2008_-_162.md": {
+      "sha256": "995f0118b913ec2e10854555ff66c4daff73b4a4bcb9bdafa5d3443ae107c016",
+      "display_name": "NSS 7 Afs 36/2008 - 162 (Rozsudek, 04.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs362008162-rozsudek--u1km98ggm0to"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_37_2010_-_101.md": {
+      "sha256": "0f9d2e59b4b8698e012c1d361078c1a528ff4de32ece296a0b1e7b8a5765419e",
+      "display_name": "NSS 7 Afs 37/2010 - 101 (Rozsudek, 29.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs372010101-rozsudek--xv5ebjdzqe35"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_38_2010_-_59.md": {
+      "sha256": "47a51ee23c90e979bb94efe727b5a13c0914db382dc9d9de2480a84b27e81dfb",
+      "display_name": "NSS 7 Afs 38/2010 - 59 (Rozsudek, 09.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs38201059-rozsudek-0-a6534hh9dzud"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_39_2010_-_76.md": {
+      "sha256": "cefaad97c137dac83ea27d0db2057005b5f012ef686ccb6003f8a3fdc553a63f",
+      "display_name": "NSS 7 Afs 39/2010 - 76 (Rozsudek, 14.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs39201076-rozsudek-1-gu52jm1ywmnb"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_40_2010_-_76.md": {
+      "sha256": "b250bf9b53979cfeb277194fc34d44e6c99c7169cb758540c7b746e960086433",
+      "display_name": "NSS 7 Afs 40/2010 - 76 (Rozsudek, 09.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs40201076-rozsudek-0-4zjrbanill5g"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_41_2010_-_45.md": {
+      "sha256": "7a792badd4fe3692b2120079d2ffeb4ef882600d23b3437f47fc81e40c7f24d8",
+      "display_name": "NSS 7 Afs 41/2010 - 45 (Rozsudek, 20.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs41201045-rozsudek-2-yx1r7z26wigv"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_43_2010_-_134.md": {
+      "sha256": "7933fcc2978d2b150dc3768b1352c7f78b03f6aa0baac6373ec6b0df80743b08",
+      "display_name": "NSS 7 Afs 43/2010 - 134 (Rozsudek, 03.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs432010134-rozsudek--oawlr8qa8s10"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_44_2009_-_60.md": {
+      "sha256": "84f51566bd58c1dfa19bf411a8a8643e8cd87cda839f977c2da39e3b33677d78",
+      "display_name": "NSS 7 Afs 44/2009 - 60 (Rozsudek, 22.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs44200960-rozsudek-2-1xoxkg3v1zvl"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_44_2010_-_149.md": {
+      "sha256": "3e51349a2d4b566d67a53a61934255f0dcfef1b20e6f65c8329d5ef044374595",
+      "display_name": "NSS 7 Afs 44/2010 - 149 (Rozsudek, 03.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs442010149-rozsudek--vqnvd7hqqlqh"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_46_2010_-_51.md": {
+      "sha256": "6836bf82789389f9441bddc234e4c0656e2f420bf2881618fc42b57e27e2e247",
+      "display_name": "NSS 7 Afs 46/2010 - 51 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs46201051-rozsudek-1-mhi6qgihsq5k"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_48_2010_-_65.md": {
+      "sha256": "f376f26ca8dc2de2cebf6257eeb613761115f116f2926dd6397af7c51fdfade8",
+      "display_name": "NSS 7 Afs 48/2010 - 65 (Rozsudek, 17.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs48201065-rozsudek-1-9yp47ggqlfir"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_4_2010_-_108.md": {
+      "sha256": "c644318fca3822f9cd8afb1bec70212eaa2fc6f2f88b565ea04b5392af0a7c24",
+      "display_name": "NSS 7 Afs 4/2010 - 108 (Rozsudek, 20.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs42010108-rozsudek-2-k44cd4bvlnaq"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_50_2010_-_60.md": {
+      "sha256": "53f5c4c63e2eb34468a5247312eb8e48af0f061339c740377204c3bfaad8c9d1",
+      "display_name": "NSS 7 Afs 50/2010 - 60 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs50201060-rozsudek-0-f6b42d3dzq0j"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_51_2007_-_137.md": {
+      "sha256": "2ff1bdee9456495153f0f54df32a7c6b0d6efb8a79e1c6ce7b3e80de0d7a65d2",
+      "display_name": "NSS 7 Afs 51/2007 - 137 (Rozsudek, 30.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs512007137-rozsudek--l9t5q3nbl6z9"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_51_2010_-_121.md": {
+      "sha256": "88c5d7130b1f44a72beb36574520d9938ef609cea8b39c1d7fcd5a74f626cc3f",
+      "display_name": "NSS 7 Afs 51/2010 - 121 (Rozsudek, 17.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs512010121-rozsudek--co5hf1m8t9o5"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_53_2010_-_55.md": {
+      "sha256": "eee6ce8bbc6cfa4c5f32a717ae83c991547309dc59b6c2c791c69efe49213447",
+      "display_name": "NSS 7 Afs 53/2010 - 55 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs53201055-rozsudek-0-7gwghh6fvwy3"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_54_2010_-_63.md": {
+      "sha256": "b1b9a21e9349259172effd93af9adba976f3c85c2e5745f9290e2544ce60ae2f",
+      "display_name": "NSS 7 Afs 54/2010 - 63 (Rozsudek, 14.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs54201063-rozsudek-1-275o3moerrb6"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_55_2010_-_108.md": {
+      "sha256": "b3586861be3153532e2220d0a546a274331a43c09ecad9950d021340227f6037",
+      "display_name": "NSS 7 Afs 55/2010 - 108 (Rozsudek, 09.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs552010108-rozsudek--ytn1an9kkf6i"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_56_2010_-_59.md": {
+      "sha256": "37ecab603d6d2b702acf92597492275b1ef3bc3edae38cdba2a272e28039f890",
+      "display_name": "NSS 7 Afs 56/2010 - 59 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs56201059-rozsudek-1-4ca8akucmh70"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_57_2007_-_49.md": {
+      "sha256": "81933d7c8dcddbe2c9b74bb5554a78bf11e1b02cf71370c1f85eab1d45d13b5f",
+      "display_name": "NSS 7 Afs 57/2007 - 49 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs57200749-rozsudek-1-4tr5voyx8smo"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_57_2010_-_72.md": {
+      "sha256": "5fdd6647dedb15f91717a8fef5d70265e36896d481703cadc4e5af5a8f4befb8",
+      "display_name": "NSS 7 Afs 57/2010 - 72 (Rozsudek, 16.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs57201072-rozsudek-1-pje6z1r8ovv1"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_58_2007_-_53.md": {
+      "sha256": "c3a226e72ef14dd99e9fc5ec5f4633c8e649bdbdf5033534de38087a09ab52cd",
+      "display_name": "NSS 7 Afs 58/2007 - 53 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs58200753-rozsudek-1-gwui00kcem7h"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_58_2010_-_106.md": {
+      "sha256": "18149772fe63b8646c39e0c6aba7f028cde0c5862495701e2f1e184bfdac2964",
+      "display_name": "NSS 7 Afs 58/2010 - 106 (Rozsudek, 05.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs582010106-rozsudek--h5dptttuizks"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_5_2010_-_284.md": {
+      "sha256": "7a8d9ddf82c2a06b1aa0f15e9060d8e6a11bb8e8bc681a62f02a1caf114237c7",
+      "display_name": "NSS 7 Afs 5/2010 - 284 (Rozsudek, 05.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs52010284-rozsudek-0-qihch8700w0r"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_61_2009_-_145.md": {
+      "sha256": "e9664464b12f2df325a0606d4acf7afaa92d9cdd5ffbf119205331d577e5b9fa",
+      "display_name": "NSS 7 Afs 61/2009 - 145 (Rozsudek, 18.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs612009145-rozsudek--0t9a9lo1emrp"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_63_2010_-_65.md": {
+      "sha256": "2693d4fbba05b28cd6602a91a215f7a7ccbc8175a4b8eee1489cbddfd62a8469",
+      "display_name": "NSS 7 Afs 63/2010 - 65 (Rozsudek, 12.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs63201065-rozsudek-1-m0g2buhlv3q8"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_64_2010_-_102.md": {
+      "sha256": "a2e9830c13a7b2e3b7fff205b6ff6abf2002c94696bf3bfe041927555014701d",
+      "display_name": "NSS 7 Afs 64/2010 - 102 (Rozsudek, 19.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs642010102-rozsudek--ays8h3lr1eru"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_69_2010_-_103.md": {
+      "sha256": "9f9474e14417048caea2263a0c4f04a6eb40bd7636fbef5524c82a803c660ca5",
+      "display_name": "NSS 7 Afs 69/2010 - 103 (Rozsudek, 02.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs692010103-rozsudek--yni0oe8lszlc"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_6_2010_-_201.md": {
+      "sha256": "6667da480baed0ca942d54c94a2241ef3640ddacf46a2dba602caa374c7a5488",
+      "display_name": "NSS 7 Afs 6/2010 - 201 (Rozsudek, 05.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs62010201-rozsudek-0-vhjcu10ikaed"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_73_2010_-_53.md": {
+      "sha256": "d8a15ae3b0d02f997c98f8bd10c62b4ff8f009111fde72a755a18b76a21128ee",
+      "display_name": "NSS 7 Afs 73/2010 - 53 (Rozsudek, 30.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs73201053-rozsudek-3-pqi79ks4dd9o"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_75_2010_-_64.md": {
+      "sha256": "e430719f6c6359587453f774505470f5abb88eccb8a8116b8791b4b821f6a339",
+      "display_name": "NSS 7 Afs 75/2010 - 64 (Rozsudek, 03.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs75201064-rozsudek-0-udnch3grw31g"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_76_2010_-_65.md": {
+      "sha256": "88763ec5535370327a45121ca2cc93a19d9117a2e6a962798608084f8109ff86",
+      "display_name": "NSS 7 Afs 76/2010 - 65 (Rozsudek, 14.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs76201065-rozsudek-1-cua7h8g8vulq"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_79_2010_-_94.md": {
+      "sha256": "62b5d1fcc69d0e7092431c6d748a8139c519bd61ca513ac25e0b27976942dae4",
+      "display_name": "NSS 7 Afs 79/2010 - 94 (Rozsudek, 27.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs79201094-rozsudek-2-kv7lg35pt2y3"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_7_2010_-_136.md": {
+      "sha256": "44fd96142b1b040af9380c2b4259d1d4816230bbabfdc68e09042fe00fd7b643",
+      "display_name": "NSS 7 Afs 7/2010 - 136 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs72010136-rozsudek-2-b0m1bu84s6bg"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_80_2010_-_110.md": {
+      "sha256": "37fc8337a14c4a0582890378ad2ff47c7660d91180953614675779758d5b3348",
+      "display_name": "NSS 7 Afs 80/2010 - 110 (Rozsudek, 03.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs802010110-rozsudek--gft81k6icap4"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_83_2010_-_92.md": {
+      "sha256": "775d6a3680217f8560748ecba67e46ae02ad7998f40bc32dbdc944d2d5a76304",
+      "display_name": "NSS 7 Afs 83/2010 - 92 (Rozsudek, 11.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs83201092-rozsudek-1-3wkei3pspar7"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_84_2010_-_137.md": {
+      "sha256": "3d2f3bef93819d815236bc2cdb5c613475ccfe103c04598508f6944f25021dec",
+      "display_name": "NSS 7 Afs 84/2010 - 137 (Rozsudek, 11.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs842010137-rozsudek--5psyi1z2x8fk"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_85_2010_-_226.md": {
+      "sha256": "d29ae2dc97b3d75d2361bf9c2a2485b6fe165a158d2bcc52c1d9514d600d8fae",
+      "display_name": "NSS 7 Afs 85/2010 - 226 (Rozsudek, 16.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs852010226-rozsudek--5dq1dpf0knew"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_8_2010_-_133.md": {
+      "sha256": "8e0f1d2243ad8e7c3e9ff4d428523471dfee4963357781e715502be7be697217",
+      "display_name": "NSS 7 Afs 8/2010 - 133 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs82010133-rozsudek-2-f02gvbnhldc7"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_90_2010_-_130.md": {
+      "sha256": "39b78cb025ac1d7e30b353cce26fae9566ac8c09d55d9ddece13dd2c0a021b41",
+      "display_name": "NSS 7 Afs 90/2010 - 130 (Rozsudek, 16.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs902010130-rozsudek--up5q403iw897"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_91_2010_-_131.md": {
+      "sha256": "05cf6fd622587bacf57afb45c775624d1298b3247c21fd6a1994cf070658282b",
+      "display_name": "NSS 7 Afs 91/2010 - 131 (Rozsudek, 09.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs912010131-rozsudek--82xjd4qp8j8d"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_92_2010_-_105.md": {
+      "sha256": "78b60b36a8f7304470f742b37c005cb2e9a5f11ab7c2227a8317a54351e083ab",
+      "display_name": "NSS 7 Afs 92/2010 - 105 (Rozsudek, 09.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs922010105-rozsudek--trhgduj0t2ug"
+    },
+    "judikatura/Afs/2010/NSS_7_Afs_9_2010_-_132.md": {
+      "sha256": "6496d2072d554ef9dd5e3355a291802c4cc07195aa4b51d652863f513c0a30e6",
+      "display_name": "NSS 7 Afs 9/2010 - 132 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-7afs92010132-rozsudek-2-d2cr1l1nhuzg"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_10_2010_-_97.md": {
+      "sha256": "9278503b8cf008f8ad50d355b1cea32cd8d9612e6f72e7903212c7308aaa85d6",
+      "display_name": "NSS 8 Afs 10/2010 - 97 (Rozsudek, 22.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs10201097-rozsudek-2-v3wwuxowb1sb"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_11_2010_-_91.md": {
+      "sha256": "1af362ca98d8c064ae60a21c56d1bc5d3f2716024f37b6c2550718926d244da0",
+      "display_name": "NSS 8 Afs 11/2010 - 91 (Rozsudek, 19.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs11201091-rozsudek-1-1g99fk9jgi17"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_12_2010_-_268.md": {
+      "sha256": "5fdb1d3cc82b4d8f9be684fca326666d1edd99b5183ba693eb6459523548ddfe",
+      "display_name": "NSS 8 Afs 12/2010 - 268 (Rozsudek, 22.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs122010268-rozsudek--s2n0exih2z4f"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_13_2010_-_134.md": {
+      "sha256": "edc05e1a9486831ba4871f8a69226eed6176f11f981583954f303c791caaf0cc",
+      "display_name": "NSS 8 Afs 13/2010 - 134 (Rozsudek, 26.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs132010134-rozsudek--n1ve68l1260y"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_14_2010_-_195.md": {
+      "sha256": "9ecac003e9f3babefd165108c64e17501791e3d81d0a6f4ee1d63349cb214e2a",
+      "display_name": "NSS 8 Afs 14/2010 - 195 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs142010195-rozsudek--5shi713f2nu5"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_15_2010_-_61.md": {
+      "sha256": "a51aa046cadf27260d0df8064ce3fcb94ede41c23fd866719509458cf4144076",
+      "display_name": "NSS 8 Afs 15/2010 - 61 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs15201061-rozsudek-3-2aqi8pety348"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_16_2010_-_149.md": {
+      "sha256": "5084ceb10df53c12defe4fa631a75ae8dfe574d920adaa5b83d7f5e57e4aed22",
+      "display_name": "NSS 8 Afs 16/2010 - 149 (Rozsudek, 31.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs162010149-rozsudek--u8bg010gwath"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_17_2009_-_76.md": {
+      "sha256": "fe92ecba2dd9d00c269409f7d711936af07a4f7d373f733b64fc89a8d87cb1d0",
+      "display_name": "NSS 8 Afs 17/2009 - 76 (Rozsudek, 26.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs17200976-rozsudek-2-bhgpu0851253"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_18_2008_-_162.md": {
+      "sha256": "0354369e53ae7271d9a6c6b95fad4758619ac6eec2ca76d043f1f6ca524b3371",
+      "display_name": "NSS 8 Afs 18/2008 - 162 (Rozsudek, 28.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs182008162-rozsudek--q1ndvt08pd5k"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_18_2010_-_121.md": {
+      "sha256": "0a7a4f53e75ef286492b4411e63c115f22c65cb5273af1a891514766b1581041",
+      "display_name": "NSS 8 Afs 18/2010 - 121 (Rozsudek, 30.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs182010121-rozsudek--h2a66aza0p4k"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_19_2009_-_40.md": {
+      "sha256": "190eac747f315b2a6d74ff95ad24efaa8e8be52fe805b19760fbeb55bd1d4e83",
+      "display_name": "NSS 8 Afs 19/2009 - 40 (Rozsudek, 30.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs19200940-rozsudek-3-za6n4htgi3q6"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_1_2010_-_72.md": {
+      "sha256": "76548e0fd234383eb466c626bda53d9a5c975dc9fb166344d8c3d6b29617bd34",
+      "display_name": "NSS 8 Afs 1/2010 - 72 (Rozsudek, 19.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs1201072-rozsudek-19-z8h7zufk9p6y"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_20_2010_-_69.md": {
+      "sha256": "0132e79c50c0432225d30fae216d88d2f4da0087b8f1b689a5a8be1d63a4b757",
+      "display_name": "NSS 8 Afs 20/2010 - 69 (Rozsudek, 26.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs20201069-rozsudek-2-nmzn211u9qok"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_21_2009_-_243.md": {
+      "sha256": "50de548403dcb2c973d1483cace18b07e23bcb4a5513e88d53a8a4c0485d1c05",
+      "display_name": "NSS 8 Afs 21/2009 - 243 (Rozsudek, 26.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs212009243-rozsudek--ebmj9swof98r"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_21_2010_-_95.md": {
+      "sha256": "a628f95daacae3dc3fe38050fcaf3087e1fcfb32f684df605b4d4507ae9e57c0",
+      "display_name": "NSS 8 Afs 21/2010 - 95 (Rozsudek, 26.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs21201095-rozsudek-2-ul6aj0wrqiin"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_22_2010_-_55.md": {
+      "sha256": "8d25b1be01c3364947143e0bc9b441aa2e5d33520950918048013f92dd71656d",
+      "display_name": "NSS 8 Afs 22/2010 - 55 (Rozsudek, 24.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs22201055-rozsudek-2-7xs2cr1jzfdp"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_23_2010_-_197.md": {
+      "sha256": "33fdd0f07ef887a4c69251b9cb47254983165305c3b85e40bdc7a089ec814d94",
+      "display_name": "NSS 8 Afs 23/2010 - 197 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs232010197-rozsudek--hp1m721ytgbo"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_25_2010_-_121.md": {
+      "sha256": "30b18008e021edfcb34dd42cf690e9054268e6f8d04558314fc03ac211aeebb4",
+      "display_name": "NSS 8 Afs 25/2010 - 121 (Rozsudek, 29.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs252010121-rozsudek--789hinxjv6xf"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_26_2009_-_76.md": {
+      "sha256": "dcd6f6918606e1b6f43708ef2764eea790f4cee4aa5ca678fac69525ff30d64e",
+      "display_name": "NSS 8 Afs 26/2009 - 76 (Rozsudek, 15.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs26200976-rozsudek-1-pjqkmszk812h"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_26_2010_-_78.md": {
+      "sha256": "283224955b614317fa272620a4f58a465fa4ea6ced72cb0f9bddf2addc0fdcf2",
+      "display_name": "NSS 8 Afs 26/2010 - 78 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs26201078-rozsudek-3-w1nf29pyj3qc"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_28_2009_-_109.md": {
+      "sha256": "72e4f75615fb7d27b44bf8070f37d6ada7463fe05af569a273b4f8b6148bf42d",
+      "display_name": "NSS 8 Afs 28/2009 - 109 (Rozsudek, 13.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs282009109-rozsudek--qrfhnhy8od0l"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_28_2010_-_247.md": {
+      "sha256": "13422c2c2d9328b259befbdf753f5a057d9d51c795371f68e1f68ccbe5b6e9d8",
+      "display_name": "NSS 8 Afs 28/2010 - 247 (Rozsudek, 28.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs282010247-rozsudek--u0vvfvy3oe51"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_29_2010_-_354.md": {
+      "sha256": "4b71c3ad419a8b2b514bcd5e4db1fddf4b8a9c00347130545f6c39be9bb71b72",
+      "display_name": "NSS 8 Afs 29/2010 - 354 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs292010354-rozsudek--u80kyz99trkf"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_2_2010_-_69.md": {
+      "sha256": "c8fc52636516341a390988c010224635bce82988a26b057107c147e7f45b8d60",
+      "display_name": "NSS 8 Afs 2/2010 - 69 (Rozsudek, 19.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs2201069-rozsudek-19-p09o5ydf6eed"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_30_2009_-_35.md": {
+      "sha256": "b7af9fbbb247e2a9bb3fdd78e45863bb3cde53d2c87b7b7dfe74fdf150a24994",
+      "display_name": "NSS 8 Afs 30/2009 - 35 (Rozsudek, 15.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs30200935-rozsudek-1-ud7jfnv39yyq"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_30_2010_-_63.md": {
+      "sha256": "07fa693bab4874cba4e85242020b2fcc5f541deb0b531a0d63b04eaecce50ba1",
+      "display_name": "NSS 8 Afs 30/2010 - 63 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs30201063-rozsudek-3-6qtxglpv4wwy"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_31_2010_-_34.md": {
+      "sha256": "6b0ec690101fa9b7bf7a23eaf618677441a8eb64671a46b12435bef055f48b25",
+      "display_name": "NSS 8 Afs 31/2010 - 34 (Rozsudek, 29.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs31201034-rozsudek-2-cu6dmov4klu8"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_34_2010_-_77.md": {
+      "sha256": "7ea9ebdbb08b14e0c65444450baa0f5f3101ded872c27522eb4c76fb08712ce0",
+      "display_name": "NSS 8 Afs 34/2010 - 77 (Rozsudek, 24.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs34201077-rozsudek-2-72w3t8huflto"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_36_2008_-_68.md": {
+      "sha256": "19192dc1e554a12e4523008164d2aa2b422fd12927d89a3e45631b35b05230e5",
+      "display_name": "NSS 8 Afs 36/2008 - 68 (Rozsudek, 23.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs36200868-rozsudek-2-o48wz0omlpk5"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_36_2009_-_58.md": {
+      "sha256": "785cc33ac5ea124d8e732771b7398190e9a2db49ac1e468850259782f9a409bf",
+      "display_name": "NSS 8 Afs 36/2009 - 58 (Rozsudek, 13.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs36200958-rozsudek-1-sr7dhs2p7x5p"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_36_2010_-_107.md": {
+      "sha256": "8f7cf6b4ee8cb5f7ed40086365d8b43458b80fce41af1f928f46b7f219be3ad3",
+      "display_name": "NSS 8 Afs 36/2010 - 107 (Rozsudek, 13.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs362010107-rozsudek--6tobdppvz9p2"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_37_2009_-_63.md": {
+      "sha256": "735a30624f2a8b9dfb62e11d4739335e4ad48702deb40250ed8da2e906808c8d",
+      "display_name": "NSS 8 Afs 37/2009 - 63 (Rozsudek, 30.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs37200963-rozsudek-3-dn0wl9awlolq"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_37_2010_-_119.md": {
+      "sha256": "4098ec55ad4bdcd87236975d1030538e283aa2ae6e96f1c2160c41806452f746",
+      "display_name": "NSS 8 Afs 37/2010 - 119 (Rozsudek, 24.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs372010119-rozsudek--m40dqu4njawd"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_38_2010_-_101.md": {
+      "sha256": "4c7ecf8e11d2e1c243a0e47162f38221db08679f6392af21090f1d6cb0c2398c",
+      "display_name": "NSS 8 Afs 38/2010 - 101 (Rozsudek, 24.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs382010101-rozsudek--2l0celehu8n4"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_3_2010_-_120.md": {
+      "sha256": "1e3e9a6dd53357491d9b9b458d1819ff899ff81989388a6154576e98b47b6f6f",
+      "display_name": "NSS 8 Afs 3/2010 - 120 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs32010120-rozsudek-3-cru1i0e78zrd"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_40_2008_-_93.md": {
+      "sha256": "96f4dd79d6161cd3a835240ef8f8101735140d5b894c8b8736184cfa4ddcb736",
+      "display_name": "NSS 8 Afs 40/2008 - 93 (Rozsudek, 28.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs40200893-rozsudek-2-ofy3332ym688"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_40_2009_-_65.md": {
+      "sha256": "81f70f752552086717e7d5e8b5743d14ebd6d81d6a4bf1073d5d51f09027efd4",
+      "display_name": "NSS 8 Afs 40/2009 - 65 (Rozsudek, 13.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs40200965-rozsudek-1-wx0zewn60q7m"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_42_2009_-_71.md": {
+      "sha256": "413fd63d26b322f0c5915e061f498e8715e06ef123ca2af074e3b7e8e2178f3e",
+      "display_name": "NSS 8 Afs 42/2009 - 71 (Rozsudek, 12.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs42200971-rozsudek-1-jpaiwvex5ayf"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_42_2010_-_81.md": {
+      "sha256": "e953305ec178270b86610b111fe6f344e9e94f5b6ea64ae4fbb481fa326955ef",
+      "display_name": "NSS 8 Afs 42/2010 - 81 (Rozsudek, 02.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs42201081-rozsudek-0-sxei7ajnnqy5"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_43_2009_-_64.md": {
+      "sha256": "f1abcc18f6dbb08dd701a3760991cba629576052d9794a01b55c9213267bd89c",
+      "display_name": "NSS 8 Afs 43/2009 - 64 (Rozsudek, 12.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs43200964-rozsudek-1-hw4hf8gloazc"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_44_2009_-_103.md": {
+      "sha256": "81753d8783c5402eae6b3b1e344bcdb45af15a8b196569a8b912497a56745fb7",
+      "display_name": "NSS 8 Afs 44/2009 - 103 (Rozsudek, 01.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs442009103-rozsudek--rgzr0szfeacr"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_45_2009_-_98.md": {
+      "sha256": "b522b3911c03f785f5ac4213626946ad3a2246ec83f6bd3de1ce8c321847ec1b",
+      "display_name": "NSS 8 Afs 45/2009 - 98 (Rozsudek, 12.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs45200998-rozsudek-1-71i3b2qwhpeg"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_45_2010_-_66.md": {
+      "sha256": "cc74d558137e2742503ae31ae4d010c21afb29d0e1b69004c031938800ffe018",
+      "display_name": "NSS 8 Afs 45/2010 - 66 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs45201066-rozsudek-3-nz5xhupdrtl9"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_46_2010_-_44.md": {
+      "sha256": "5f4dac61a80d7a95b3886e864da6d6b9f3327cc5f028762c86c526f88cec7453",
+      "display_name": "NSS 8 Afs 46/2010 - 44 (Rozsudek, 21.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs46201044-rozsudek-2-s4mwo3h64m0g"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_47_2010_-_123.md": {
+      "sha256": "e677a6c1c2472a41ec9e79a5b486d5b06b5687efe657047bf9343114d273dcfd",
+      "display_name": "NSS 8 Afs 47/2010 - 123 (Rozsudek, 22.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs472010123-rozsudek--txgoklv5b8pz"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_48_2007_-_235.md": {
+      "sha256": "db183f1eb6251bdb566fffacaa33b6811f8b518339b4cf844cfca4c26cfaf75f",
+      "display_name": "NSS 8 Afs 48/2007 - 235 (Rozsudek, 26.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs482007235-rozsudek--vv354mcz6utf"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_49_2009_-_70.md": {
+      "sha256": "1ae6536e8a2b4fee7dbe82cf532d497241e28873f4d14612a056b29b545ff2c7",
+      "display_name": "NSS 8 Afs 49/2009 - 70 (Rozsudek, 29.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs49200970-rozsudek-2-1pio9atnkz7t"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_4_2010_-_142.md": {
+      "sha256": "3eae7f89fff51da26c053cd7d058d64a3de46b434f0d8e0d5065e2345676da92",
+      "display_name": "NSS 8 Afs 4/2010 - 142 (Rozsudek, 30.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs42010142-rozsudek-3-6dahu58z7hsc"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_51_2010_-_60.md": {
+      "sha256": "f123955d0243b01c8a0667f3a88a15ad9cc25166d7dfd27cc1439018b95253cc",
+      "display_name": "NSS 8 Afs 51/2010 - 60 (Rozsudek, 03.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs51201060-rozsudek-0-f9c2ldc9hxdh"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_52_2008_-_159.md": {
+      "sha256": "64f1826e770ee192dc4e35c9689b1d6140e3cc6322f4a8c94493df9e51718001",
+      "display_name": "NSS 8 Afs 52/2008 - 159 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs522008159-rozsudek--t12is6vmlj40"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_52_2010_-_122.md": {
+      "sha256": "9962bb5899b92a3986e3706de65340f4b8a6c05ef63c6ddca906d535d64796bf",
+      "display_name": "NSS 8 Afs 52/2010 - 122 (Rozsudek, 23.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs522010122-rozsudek--kb5txk7j93u2"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_53_2009_-_123.md": {
+      "sha256": "9d325754c329f0820e31824356a480ec6a793afef9eb443c86f3d9766e7b6ea1",
+      "display_name": "NSS 8 Afs 53/2009 - 123 (Rozsudek, 28.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs532009123-rozsudek--zgpwkoigjh2u"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_54_2010_-_155.md": {
+      "sha256": "d136b1dddc8dfd196816b4e5caf5470b6d480ee52c2090477e8589a2b0453fa7",
+      "display_name": "NSS 8 Afs 54/2010 - 155 (Rozsudek, 29.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs542010155-rozsudek--u87scx02grtn"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_55_2009_-_67.md": {
+      "sha256": "0644969a96d135e594276ca39b26de7c5fd16904ec9549e1cbb1f6c721621e8c",
+      "display_name": "NSS 8 Afs 55/2009 - 67 (Rozsudek, 12.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs55200967-rozsudek-1-v9s8acczpa40"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_55_2010_-_121.md": {
+      "sha256": "3d1a7646315139c58b1343f4570e954136999519e71a73a537b7627addf0c3f1",
+      "display_name": "NSS 8 Afs 55/2010 - 121 (Rozsudek, 27.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs552010121-rozsudek--syxe18can6oo"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_57_2009_-_109.md": {
+      "sha256": "f4967ad9d3cf7c300a1758e57245c5e3201e13e86c11b943bee0e25028fbb0c3",
+      "display_name": "NSS 8 Afs 57/2009 - 109 (Rozsudek, 19.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs572009109-rozsudek--bgmcirwr4run"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_58_2009_-_65.md": {
+      "sha256": "9f33dd8a1977be834d06e024f0bce45b677b1e692d49fee6dc984b16c7b57d6b",
+      "display_name": "NSS 8 Afs 58/2009 - 65 (Rozsudek, 12.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs58200965-rozsudek-1-4agu2oib39v2"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_5_2010_-_90.md": {
+      "sha256": "67f8f0e8460859a616dbc935b62f15a595b0212668d638aebda00111efef6680",
+      "display_name": "NSS 8 Afs 5/2010 - 90 (Rozsudek, 27.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs5201090-rozsudek-27-93b6f0jhcn2w"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_60_2009_-_78.md": {
+      "sha256": "0b231a9799480462bb226e1ee96be0af3c82b0236393cd62f9a0a33dfe763831",
+      "display_name": "NSS 8 Afs 60/2009 - 78 (Rozsudek, 31.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs60200978-rozsudek-3-tvszwkvd3n71"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_61_2008_-_129.md": {
+      "sha256": "afa770817223262082e55d3e82871486e4319f5c32845fb1e648b81042fd2fc6",
+      "display_name": "NSS 8 Afs 61/2008 - 129 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs612008129-rozsudek--szh6mh4aviyu"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_63_2009_-_104.md": {
+      "sha256": "39e6fa97338047e90aa383255f591b7d09c56e41ab1b6ef33ef7a6b4ef61083d",
+      "display_name": "NSS 8 Afs 63/2009 - 104 (Rozsudek, 20.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs632009104-rozsudek--jojd3m7xn62x"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_64_2009_-_71.md": {
+      "sha256": "a4f042dfa02fac0cbd6afe99b29fb38caf96cfb5f66ea084181fcd4cb147be32",
+      "display_name": "NSS 8 Afs 64/2009 - 71 (Rozsudek, 28.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs64200971-rozsudek-2-nau6et39lcth"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_66_2009_-_78.md": {
+      "sha256": "85889e66410533a30c497ca7341f36c238bcc9e4f90699c3bed068b9e58bee99",
+      "display_name": "NSS 8 Afs 66/2009 - 78 (Rozsudek, 28.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs66200978-rozsudek-2-qclxsfhcccph"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_66_2010_-_117.md": {
+      "sha256": "21f2574653343967f7a15f1ad6589cd4bb1c1ae960145d044e6e21a995e1ff42",
+      "display_name": "NSS 8 Afs 66/2010 - 117 (Rozsudek, 29.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs662010117-rozsudek--gmqub8cv1ta3"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_67_2009_-_38.md": {
+      "sha256": "7c0d175bcbd1709e6936f1255de479b38a6befba9b5878951031b8f470b3038f",
+      "display_name": "NSS 8 Afs 67/2009 - 38 (Rozsudek, 03.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs67200938-rozsudek-0-97liu73wyoga"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_68_2009_-_43.md": {
+      "sha256": "7efa4d05c1d8c0d76925e66d2082be6b96a0750773c06aeb76f8c84353774b33",
+      "display_name": "NSS 8 Afs 68/2009 - 43 (Rozsudek, 03.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs68200943-rozsudek-0-nvf7kklybup2"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_6_2010_-_43.md": {
+      "sha256": "6d83d9cb3a5ff24ad4c2f8bdd7dc0279b3ecd4f62e8d1220b0108731d5dc20c7",
+      "display_name": "NSS 8 Afs 6/2010 - 43 (Rozsudek, 28.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs6201043-rozsudek-28-ucvqp2cauqk5"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_70_2009_-_286.md": {
+      "sha256": "77b2d2a341fc18785f1742cc939f20a1ee22e3550fa42838f6a036a062ac8038",
+      "display_name": "NSS 8 Afs 70/2009 - 286 (Rozsudek, 31.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs702009286-rozsudek--00p39i8ql2u0"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_71_2009_-_77.md": {
+      "sha256": "828532d79c3539f424359e36db1ec425385ae29c96e296b87141b472ae66f390",
+      "display_name": "NSS 8 Afs 71/2009 - 77 (Rozsudek, 30.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs71200977-rozsudek-3-xqmr018kuzoa"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_73_2008_-_138.md": {
+      "sha256": "7b1e6fa4a3dfec796d948f30f2f4576e6e0138c5edf2b38cafbe9b42c6a5010f",
+      "display_name": "NSS 8 Afs 73/2008 - 138 (Rozsudek, 30.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs732008138-rozsudek--c49dx5nxzt2r"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_73_2009_-_67.md": {
+      "sha256": "28dee8582474981ddf76984f1a4cabc425a5aea24adb0b3e5f1ea88448f8f6a8",
+      "display_name": "NSS 8 Afs 73/2009 - 67 (Rozsudek, 19.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs73200967-rozsudek-1-alhgdyippmns"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_74_2009_-_104.md": {
+      "sha256": "18edb73e2219799d8b7b611c30ece2474effe1ba844cecca171a197da678e470",
+      "display_name": "NSS 8 Afs 74/2009 - 104 (Rozsudek, 27.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs742009104-rozsudek--ymec4zund380"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_75_2009_-_70.md": {
+      "sha256": "078a38133202487bdd9a0b84bf0eefcbadc6fd160e9ed897e0f559d5dbc4903f",
+      "display_name": "NSS 8 Afs 75/2009 - 70 (Rozsudek, 31.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs75200970-rozsudek-3-tmp9p1o7jhm5"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_78_2009_-_56.md": {
+      "sha256": "4663c357eaaad453d59ca6d5e5d915a743bfcfb583c80ce68d23d5b94cc3cd77",
+      "display_name": "NSS 8 Afs 78/2009 - 56 (Rozsudek, 23.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs78200956-rozsudek-2-7von84yxk2up"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_79_2009_-_131.md": {
+      "sha256": "b185d65d1b671c02aaa6f875d3e7c9ddc5aebfb99cc12ad164f4814619b66289",
+      "display_name": "NSS 8 Afs 79/2009 - 131 (Rozsudek, 28.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs792009131-rozsudek--avh2dzm1ltnd"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_7_2010_-_70.md": {
+      "sha256": "28e86a0083363cbd7cc0efee9920440bb534fd9999614af2f27a821ee8820a27",
+      "display_name": "NSS 8 Afs 7/2010 - 70 (Rozsudek, 24.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs7201070-rozsudek-24-i3q2o9ocwajg"
+    },
+    "judikatura/Afs/2010/NSS_8_Afs_9_2010_-_99.md": {
+      "sha256": "a87f7b7b44c55455ee9034d106f98da0bf4a68781f3d408a7a71858a83411036",
+      "display_name": "NSS 8 Afs 9/2010 - 99 (Rozsudek, 20.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-8afs9201099-rozsudek-20-wjqow2jbmfd9"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_105_2009_-_76.md": {
+      "sha256": "f79ec24df04436f571bfa2312160c3b26f27eb9193cfe93f9e6cef7de9abda1c",
+      "display_name": "NSS 9 Afs 105/2009 - 76 (Rozsudek, 21.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs105200976-rozsudek--kangjyzrkw5p"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_107_2009_-_67.md": {
+      "sha256": "e6f7d9031b3b9b4e9797ed6ad2348df8d2ee913f438f3f902c49e36990f0d41e",
+      "display_name": "NSS 9 Afs 107/2009 - 67 (Rozsudek, 11.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs107200967-rozsudek--ue7yy8ho0g6r"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_108_2009_-_43.md": {
+      "sha256": "dffbd596e411ef35db10ea09ca378588ab432ff666527fd28785a35269a535c7",
+      "display_name": "NSS 9 Afs 108/2009 - 43 (Rozsudek, 29.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs108200943-rozsudek--wxbtkndz7fed"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_109_2009_-_180.md": {
+      "sha256": "9af01ac9afc5d65a0c91820c4c9efa01b2d74d8aef93ddf7414a90b6fa0b0a3b",
+      "display_name": "NSS 9 Afs 109/2009 - 180 (Rozsudek, 21.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs1092009180-rozsudek-80sh7lwsaxjb"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_10_2010_-_237.md": {
+      "sha256": "f738c9f5ea3ecc65304104ee6ad32d969d0179598fc15e1ab6a8e6e93c07cb92",
+      "display_name": "NSS 9 Afs 10/2010 - 237 (Rozsudek, 04.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs102010237-rozsudek--0uc71kxb5va6"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_110_2009_-_95.md": {
+      "sha256": "6d844a7f6f2257d4c39be37a56251b581eff0eebd3664a64b853be3be760fd4b",
+      "display_name": "NSS 9 Afs 110/2009 - 95 (Rozsudek, 24.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs110200995-rozsudek--ya2u8i5rrh5u"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_111_2009_-_274.md": {
+      "sha256": "797fc12b1954414736d63154aceadd9541a3663f36f336a5b141f44e25732312",
+      "display_name": "NSS 9 Afs 111/2009 - 274 (Rozsudek, 21.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs1112009274-rozsudek-fetpx6vnbcl1"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_112_2009_-_185.md": {
+      "sha256": "0c6d5d0df0348433ad79467aa4cafbea248915fbc52d6a6ee1a6369ccabd4730",
+      "display_name": "NSS 9 Afs 112/2009 - 185 (Rozsudek, 24.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs1122009185-rozsudek-roczz5dhzp2b"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_113_2009_-_70.md": {
+      "sha256": "1ff56f4b02d7aed24d61b1b75f20b609a5f81a66da1e8a6f5318bb2ffce8eb9e",
+      "display_name": "NSS 9 Afs 113/2009 - 70 (Rozsudek, 24.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs113200970-rozsudek--b003h3icnapk"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_114_2008_-_47.md": {
+      "sha256": "452d0596d318cdac990281577e908ec6f431fe9d6943af32e54aa548aac27b3e",
+      "display_name": "NSS 9 Afs 114/2008 - 47 (Rozsudek, 11.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs114200847-rozsudek--ptjev5soylv7"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_114_2009_-_66.md": {
+      "sha256": "c35aef91c5983fdb1ce8dee0a5cf496a44ebc1ad99000e927fb5ed6a0fe5cfae",
+      "display_name": "NSS 9 Afs 114/2009 - 66 (Rozsudek, 24.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs114200966-rozsudek--46eexao4r7u9"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_115_2009_-_69.md": {
+      "sha256": "134fb93e4c74cbf6d470ba0628d6d417776804f7d9787238a73215722d4a057d",
+      "display_name": "NSS 9 Afs 115/2009 - 69 (Rozsudek, 24.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs115200969-rozsudek--e3k3oj5xdbse"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_116_2009_-_71.md": {
+      "sha256": "8637aee105ca7df1f572a14ab6dcc0a859ae4ac30b227a71d0f09f94303c4a37",
+      "display_name": "NSS 9 Afs 116/2009 - 71 (Rozsudek, 24.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs116200971-rozsudek--n60qs5q074g4"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_117_2009_-_202.md": {
+      "sha256": "529d11a17b12cad8bde50a4c9a8116ed006b2dafbf4fa86d4c1f1357fb09cfa2",
+      "display_name": "NSS 9 Afs 117/2009 - 202 (Rozsudek, 29.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs1172009202-rozsudek-4x55csub4im6"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_119_2009_-_47.md": {
+      "sha256": "f6acce6cc96aec98017051f401f0e3b7c4a00946ded8e2659112b2b74558926c",
+      "display_name": "NSS 9 Afs 119/2009 - 47 (Rozsudek, 27.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs119200947-rozsudek--oq04sy0pmyim"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_11_2010_-_71.md": {
+      "sha256": "d386d7bf4a7bbccb9df620ba941171724ccffa82b5585432355e6a6814b38449",
+      "display_name": "NSS 9 Afs 11/2010 - 71 (Rozsudek, 06.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs11201071-rozsudek-0-gb76vkeyp01v"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_120_2009_-_47.md": {
+      "sha256": "e7f4b532a1d5bdd16121e9e0a934f99cb7e11149d1af6cf0f99b2c13b7cb8254",
+      "display_name": "NSS 9 Afs 120/2009 - 47 (Rozsudek, 27.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs120200947-rozsudek--zajnc7eiazay"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_12_2010_-_244.md": {
+      "sha256": "42a45cf793b790d520f73b16113a9c7ad7d343ca9f70e6c4ecd55ca19c9e1c48",
+      "display_name": "NSS 9 Afs 12/2010 - 244 (Rozsudek, 05.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs122010244-rozsudek--nk8d2cfpiod0"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_13_2010_-_73.md": {
+      "sha256": "f6f23943ced717adb029e2378fa34fab223462a60a29747da872c9deeb697687",
+      "display_name": "NSS 9 Afs 13/2010 - 73 (Rozsudek, 06.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs13201073-rozsudek-0-w2hq5a1ib2uj"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_14_2010_-_54.md": {
+      "sha256": "3ca2ed0e4ff5fff68b6bc880d352f4c18cb35cb96da86ec4d408b1ba080e9276",
+      "display_name": "NSS 9 Afs 14/2010 - 54 (Rozsudek, 02.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs14201054-rozsudek-0-kk94htg3m2sf"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_15_2010_-_96.md": {
+      "sha256": "0dd75d40958aff151d7c77adc8413c4e50ab8687fa3a5c63422c20c60febaf48",
+      "display_name": "NSS 9 Afs 15/2010 - 96 (Rozsudek, 21.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs15201096-rozsudek-2-twhfv2z5c3zy"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_17_2010_-_101.md": {
+      "sha256": "2d61b54f01d4d48583174d90511583cba8b68c23c6b650542828658d7e5ef95b",
+      "display_name": "NSS 9 Afs 17/2010 - 101 (Rozsudek, 27.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs172010101-rozsudek--gzg6pl16tacl"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_18_2010_-_227.md": {
+      "sha256": "dd92ee04d448803daa744060858b20e606070c43d96b5dfccad6310c5fc6e669",
+      "display_name": "NSS 9 Afs 18/2010 - 227 (Rozsudek, 06.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs182010227-rozsudek--s0fuccfiuz8r"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_1_2010_-_252.md": {
+      "sha256": "30d680dc2538c936a2f970dc2b167015849de1e78902d0496b34c700665b6de8",
+      "display_name": "NSS 9 Afs 1/2010 - 252 (Rozsudek, 21.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs12010252-rozsudek-2-iuy6j7h99l9r"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_20_2010_-_74.md": {
+      "sha256": "9a828722079a01d294a629cb3af3a5a71c3777dd8efb9c5878bf1bba958e9127",
+      "display_name": "NSS 9 Afs 20/2010 - 74 (Rozsudek, 12.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs20201074-rozsudek-1-74e79tkfsrxh"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_21_2010_-_84.md": {
+      "sha256": "7402c87c3d4f7a9a9eccbc7eceef349e9a630b8621a478368fad88a3fb55609c",
+      "display_name": "NSS 9 Afs 21/2010 - 84 (Rozsudek, 12.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs21201084-rozsudek-1-aaw0i1w4xmha"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_22_2010_-_84.md": {
+      "sha256": "ee26bb447ee33431b2bed56dc3374a85dcbd05a16764a2f316d3e4baa355bdad",
+      "display_name": "NSS 9 Afs 22/2010 - 84 (Rozsudek, 12.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs22201084-rozsudek-1-fdy5t8tn2gue"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_24_2010_-_176.md": {
+      "sha256": "db34b154888a19b2ec920da08eb82487e7824a09ce493d03d75215a8b792d177",
+      "display_name": "NSS 9 Afs 24/2010 - 176 (Rozsudek, 02.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs242010176-rozsudek--x1wnz6bevpvt"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_27_2010_-_130.md": {
+      "sha256": "06ad535c53b58c28e82dcee2e503116106c7d9e0a711f50d811d986edee5e641",
+      "display_name": "NSS 9 Afs 27/2010 - 130 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs272010130-rozsudek--l65oboaodwj3"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_2_2010_-_243.md": {
+      "sha256": "2899b1d96e6a5b16a7e63caa12103651b22f6a03d219d8aa307918a5910a2598",
+      "display_name": "NSS 9 Afs 2/2010 - 243 (Rozsudek, 16.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs22010243-rozsudek-1-pz9lbcb4ojk7"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_30_2010_-_182.md": {
+      "sha256": "34a7e5ef3b47eccc1f2b989b713a6bb45ebbb0cca012bd9907cf4d69e5551111",
+      "display_name": "NSS 9 Afs 30/2010 - 182 (Rozsudek, 16.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs302010182-rozsudek--gv5x9lh5htlz"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_3_2010_-_58.md": {
+      "sha256": "67c88fd86d77b5fd161d64d324187bffaeee3ca7e0133f8a9f246464ca3d15ae",
+      "display_name": "NSS 9 Afs 3/2010 - 58 (Rozsudek, 24.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs3201058-rozsudek-24-24p4h2nfe1oq"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_41_2010_-_51.md": {
+      "sha256": "6a53f868855b7e22ef7ae43835a69fbab96e4e1e4f8d5d27f57297a5f7f8c315",
+      "display_name": "NSS 9 Afs 41/2010 - 51 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs41201051-rozsudek-3-1zome00v78eg"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_43_2010_-_115.md": {
+      "sha256": "89cac2c08fb68d6a02e827dd5620f0cc18c043edf9a43b29c8e9c536a364d3b2",
+      "display_name": "NSS 9 Afs 43/2010 - 115 (Rozsudek, 14.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs432010115-rozsudek--3sepk9ldc4u2"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_45_2010_-_69.md": {
+      "sha256": "e8a105c131534e2c77e2b9e706f3749a30adbd6d44ee02902747aaeeb71e3afe",
+      "display_name": "NSS 9 Afs 45/2010 - 69 (Rozsudek, 15.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs45201069-rozsudek-1-0vb9bfz6jfpr"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_46_2010_-_227.md": {
+      "sha256": "fef6170c6d6e0cb03758acdc343bca958732fe604a2084bc0ddd4d12748adc54",
+      "display_name": "NSS 9 Afs 46/2010 - 227 (Rozsudek, 30.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs462010227-rozsudek--d1k9fomvonqj"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_47_2010_-_57.md": {
+      "sha256": "037d4ea80496676acdb197b410b9f5631995713c4811d8c89f92b50b15f16429",
+      "display_name": "NSS 9 Afs 47/2010 - 57 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs47201057-rozsudek-3-s4t7wmwy3ea6"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_48_2008_-_118.md": {
+      "sha256": "e2a171696bc34242337f089991d78e8dd215fbfb6f9b0e860cc516f34cc73566",
+      "display_name": "NSS 9 Afs 48/2008 - 118 (Rozsudek, 03.06.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs482008118-rozsudek--c4h7yqjt1wvd"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_48_2010_-_63.md": {
+      "sha256": "1eec2ad78513ad981b369eab2fe1f9864303b18779dd56beb21e81275c29a07b",
+      "display_name": "NSS 9 Afs 48/2010 - 63 (Rozsudek, 21.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs48201063-rozsudek-2-mrmdtu4wv8xf"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_4_2010_-_140.md": {
+      "sha256": "d920eb51db94b86c3eb63e4d65655eff93469ff9b962380d31a9b6695c1917cc",
+      "display_name": "NSS 9 Afs 4/2010 - 140 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs42010140-rozsudek-1-jholh883hoez"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_55_2009_-_55.md": {
+      "sha256": "c3fcc2d2a9dff46577e9e1acf75a0411cfe253d8fee0795dfb5d90cbae93f5d4",
+      "display_name": "NSS 9 Afs 55/2009 - 55 (Rozsudek, 20.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs55200955-rozsudek-2-u44x61y7blzk"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_56_2009_-_55.md": {
+      "sha256": "c6cbc52f96e2ea0914c823890032aa88c5f0643af7cbefcd821a92e0909abbe9",
+      "display_name": "NSS 9 Afs 56/2009 - 55 (Rozsudek, 20.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs56200955-rozsudek-2-0z1mqrcg1dpo"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_56_2010_-_172.md": {
+      "sha256": "833b6bbb00fe2a6ebd3ea6a48b0c96b47cda984de17ea4e83a9eb5f0e9bf9ff7",
+      "display_name": "NSS 9 Afs 56/2010 - 172 (Rozsudek, 24.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs562010172-rozsudek--rh3a9yb6skxg"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_57_2009_-_73.md": {
+      "sha256": "d02b390dc6a5cb27208adda57d48f2db587e08c5c694eb6aaedc4ab0c5d33b64",
+      "display_name": "NSS 9 Afs 57/2009 - 73 (Rozsudek, 07.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs57200973-rozsudek-0-p6n6vb1i64yf"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_57_2010_-_139.md": {
+      "sha256": "51c9da1f43024f1b0d6b974c770204f054bee0679d918388a005ba5789bf1e87",
+      "display_name": "NSS 9 Afs 57/2010 - 139 (Rozsudek, 08.09.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs572010139-rozsudek--9c4xg4g4shlh"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_5_2010_-_81.md": {
+      "sha256": "66d5521c67b707e4553143b76b556d2c72a1ad95bf94d2ec67fbc5f1adfbb371",
+      "display_name": "NSS 9 Afs 5/2010 - 81 (Rozsudek, 15.07.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs5201081-rozsudek-15-u7xwezvf8nf9"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_61_2009_-_82.md": {
+      "sha256": "229f791b8daed5c875fd9aca62f290069570eda36fd54484f3805894b2dea4f3",
+      "display_name": "NSS 9 Afs 61/2009 - 82 (Rozsudek, 20.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs61200982-rozsudek-2-e2fe97qpvet5"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_61_2010_-_215.md": {
+      "sha256": "c3dddf0b9713229bb6b3d3310d57c03226622401b594ababe519ced27fcb36c2",
+      "display_name": "NSS 9 Afs 61/2010 - 215 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs612010215-rozsudek--pbe3gk0uvycd"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_62_2010_-_225.md": {
+      "sha256": "9bd86120f9581bb631546cbcf16398e08038eba25ec19ea1f028efccfdd12d79",
+      "display_name": "NSS 9 Afs 62/2010 - 225 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs622010225-rozsudek--amjkwultmea8"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_63_2010_-_225.md": {
+      "sha256": "c12b29b41b9e182358e2764ee9adf9b1d0edb9e6f1c4abfd7802e660c17e68ab",
+      "display_name": "NSS 9 Afs 63/2010 - 225 (Rozsudek, 30.11.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs632010225-rozsudek--jo4f7kbjbsab"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_66_2009_-_256.md": {
+      "sha256": "22fe20886b78c6e20eb72ba1cffe5f376b2809bf7a218b13c49c42e11514cef0",
+      "display_name": "NSS 9 Afs 66/2009 - 256 (Rozsudek, 24.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs662009256-rozsudek--5qaamzt7c7li"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_67_2009_-_69.md": {
+      "sha256": "faeb6c123bbb85755da4c50ff3d52bcfb4bf8552f5de20034db35c418497522c",
+      "display_name": "NSS 9 Afs 67/2009 - 69 (Rozsudek, 24.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs67200969-rozsudek-2-9djzim64q4y5"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_68_2010_-_255.md": {
+      "sha256": "a284f11840c3d340d9482b8d673953b198c33a6a0c91da7dabc08ccf1658252c",
+      "display_name": "NSS 9 Afs 68/2010 - 255 (Rozsudek, 21.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs682010255-rozsudek--ij9t4ex3ou8r"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_69_2009_-_148.md": {
+      "sha256": "e1fd4c7c3e8ec0f816ba47f70a10d83beefc87dc4bb018377450f7db440384a9",
+      "display_name": "NSS 9 Afs 69/2009 - 148 (Rozsudek, 31.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs692009148-rozsudek--9tw6wpxlzyoo"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_69_2010_-_175.md": {
+      "sha256": "562a525b5d3c598575aea1904268f59f81248ff9fe96b79ffc30ce8128d0ea4b",
+      "display_name": "NSS 9 Afs 69/2010 - 175 (Rozsudek, 21.12.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs692010175-rozsudek--w2rj4i0uuqb9"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_6_2010_-_203.md": {
+      "sha256": "0298ccc03be65c9b8bb4d8517415f697a7299dbb35d519df00d2fa258d26a8e6",
+      "display_name": "NSS 9 Afs 6/2010 - 203 (Rozsudek, 12.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs62010203-rozsudek-1-kwpmqi8zw75w"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_72_2008_-_103.md": {
+      "sha256": "1a134da0af4b537390b72b43802372147e121df039d57f04c4ac741df6ebe4e1",
+      "display_name": "NSS 9 Afs 72/2008 - 103 (Rozsudek, 12.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs722008103-rozsudek--45rrf8z3ee4u"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_72_2009_-_180.md": {
+      "sha256": "8a6921980ad77bc6164cd9758a7b17823c4cddaaf2e90c570150a851224d8e52",
+      "display_name": "NSS 9 Afs 72/2009 - 180 (Rozsudek, 18.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs722009180-rozsudek--qebxnbubezn9"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_74_2009_-_103.md": {
+      "sha256": "840b1053e87adb15e47a0d180eb01558289acd67766f817d31da4fb9b2302ad2",
+      "display_name": "NSS 9 Afs 74/2009 - 103 (Rozsudek, 28.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs742009103-rozsudek--xvgaedvdwtfh"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_74_2010_-_254.md": {
+      "sha256": "cfe94b41a8242472d8e3bd97ace16decf241ef957d0b21e9fc30bd5974a09494",
+      "display_name": "NSS 9 Afs 74/2010 - 254 (Rozsudek, 21.10.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs742010254-rozsudek--5do7mzvybc1e"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_77_2009_-_86.md": {
+      "sha256": "32124c3c29f29297f962cae3c370c1829b4e61e6d016af9a55ac3c9dd5a0fefa",
+      "display_name": "NSS 9 Afs 77/2009 - 86 (Rozsudek, 18.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs77200986-rozsudek-1-c9sz7glz6bak"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_78_2009_-_59.md": {
+      "sha256": "4d6a16ad3a1da552ea642124f02b7fa0b5762b3f982c558708f6c37b1cb19991",
+      "display_name": "NSS 9 Afs 78/2009 - 59 (Rozsudek, 20.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs78200959-rozsudek-2-idgv7woeda90"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_7_2010_-_181.md": {
+      "sha256": "9f9170c518d8c2d0952ce3437565f4ba15712f03598cd2deacd8e5b382360220",
+      "display_name": "NSS 9 Afs 7/2010 - 181 (Rozsudek, 05.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs72010181-rozsudek-0-qtj3g5c8fjuj"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_80_2009_-_99.md": {
+      "sha256": "425f856ceceba4229a9112428ece61e837c49d6b7fb690bccceb740df1acec69",
+      "display_name": "NSS 9 Afs 80/2009 - 99 (Rozsudek, 04.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs80200999-rozsudek-0-kbjvg2jkm8s9"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_81_2009_-_48.md": {
+      "sha256": "9a57f2a7c3678eb0ff5235f959bbf878a87581872ff394373d621e0d35582830",
+      "display_name": "NSS 9 Afs 81/2009 - 48 (Rozsudek, 20.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs81200948-rozsudek-2-h1b44g6c1r22"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_82_2009_-_68.md": {
+      "sha256": "4346fafcfca58c707d415ec60664f29ca1ada4a4c49d3a22d59dd9bca6fc63b9",
+      "display_name": "NSS 9 Afs 82/2009 - 68 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs82200968-rozsudek-2-7cwkr1t2xp6g"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_83_2009_-_232.md": {
+      "sha256": "324c64dc2cc89ab11a86f74190b55508fc64beddd5a792ffdad83771cae29fca",
+      "display_name": "NSS 9 Afs 83/2009 - 232 (Rozsudek, 18.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs832009232-rozsudek--zyv6jwed5p6p"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_84_2009_-_45.md": {
+      "sha256": "bd2607de064c077ae708d26fcc501afe5ec563fbb971163293d4b50849773dc7",
+      "display_name": "NSS 9 Afs 84/2009 - 45 (Rozsudek, 20.01.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs84200945-rozsudek-2-dvjfsyn55qic"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_86_2009_-_164.md": {
+      "sha256": "b644d70a9a68aede3acf4fad75940b0202fa9993eb18af271301ac538b048055",
+      "display_name": "NSS 9 Afs 86/2009 - 164 (Rozsudek, 21.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs862009164-rozsudek--i6lbt705t57d"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_87_2009_-_138.md": {
+      "sha256": "d818ce2f44ea981de215812fd607a441c53d05536fe9c18d1b25fe351b00060f",
+      "display_name": "NSS 9 Afs 87/2009 - 138 (Rozsudek, 31.03.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs872009138-rozsudek--nnez4qecmcuv"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_8_2010_-_156.md": {
+      "sha256": "0c2d1beef5e92476ac77a84b149cf19b23c666b46043495b4ece62f9ec4038b5",
+      "display_name": "NSS 9 Afs 8/2010 - 156 (Rozsudek, 05.08.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs82010156-rozsudek-0-xmmf81961ruf"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_92_2009_-_67.md": {
+      "sha256": "34b00976ef8a9734461038e92be08ba4d02808206ce02ca2e3accc48c7eb04bd",
+      "display_name": "NSS 9 Afs 92/2009 - 67 (Rozsudek, 04.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs92200967-rozsudek-0-galrmfoqkxyj"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_93_2009_-_93.md": {
+      "sha256": "ba068c2517b99c11a07de216f1bd42d609d01e501d53593c3d392e42c7117bf7",
+      "display_name": "NSS 9 Afs 93/2009 - 93 (Rozsudek, 24.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs93200993-rozsudek-2-xr7ayn8u0d6j"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_94_2009_-_156.md": {
+      "sha256": "0e006a2d236a7f2710e320e7248ac344dcfd87e28b4f125c34fa131e87a9c78f",
+      "display_name": "NSS 9 Afs 94/2009 - 156 (Rozsudek, 21.04.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs942009156-rozsudek--pg5k6rj03mzq"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_96_2009_-_78.md": {
+      "sha256": "35b1cad343fd81486caedc78b557e9212508d0d64003443186d534c445264fe2",
+      "display_name": "NSS 9 Afs 96/2009 - 78 (Rozsudek, 24.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs96200978-rozsudek-2-ksjgtslaaxkv"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_97_2009_-_115.md": {
+      "sha256": "c91f0b9d0fe418178655e9799f4e9e1f536588677bd3d4057d3a09be2b52b445",
+      "display_name": "NSS 9 Afs 97/2009 - 115 (Rozsudek, 20.05.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs972009115-rozsudek--ex2ly4rvyb6p"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_98_2009_-_313.md": {
+      "sha256": "13c9b36ee0e1713a5ec2499cd5492bd513da85acfeab19aaccb3e16b840ea077",
+      "display_name": "NSS 9 Afs 98/2009 - 313 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs982009313-rozsudek--y6uwb4xtqslh"
+    },
+    "judikatura/Afs/2010/NSS_9_Afs_9_2008_-_106.md": {
+      "sha256": "a0abc52f77f18ef9635231d8f3065ae27f871b6c35397134b50931ff0ba7dd2a",
+      "display_name": "NSS 9 Afs 9/2008 - 106 (Rozsudek, 25.02.2010)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-9afs92008106-rozsudek-2-vl3r86hj55s6"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_100_2010_-_174.md": {
+      "sha256": "f31313a01b73860c07afca9448d334ccdf3199ce527e3c7b5314fdd5d9911cfd",
+      "display_name": "NSS 1 Afs 100/2010 - 174 (Rozsudek, 09.02.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs1002010174-rozsudek-f0h0kvsrkg1e"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_101_2010_-_83.md": {
+      "sha256": "ff0ec5294766710bad8b3302de7bb7a67195075ec22863fe7ff9948243cd3b38",
+      "display_name": "NSS 1 Afs 101/2010 - 83 (Rozsudek, 23.03.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs101201083-rozsudek--cbcu1v4pqetd"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_104_2010_-_107.md": {
+      "sha256": "6466f8f68bc0f05f929e14a782849786eaafdaf370a86278e246956ea464fa90",
+      "display_name": "NSS 1 Afs 104/2010 - 107 (Rozsudek, 12.01.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs1042010107-rozsudek-67fv8nyfstwx"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_105_2010_-_167.md": {
+      "sha256": "15270a62d76bb91d576dda05ab6bc128d34e904972acb74cd28fa63328ad6561",
+      "display_name": "NSS 1 Afs 105/2010 - 167 (Rozsudek, 17.02.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs1052010167-rozsudek-j4embb6dubjf"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_106_2010_-_95.md": {
+      "sha256": "8b85fe0c5c276cda6390e6fe917523fd83ca7024f69ef645fb98a8bf1b5cb4b3",
+      "display_name": "NSS 1 Afs 106/2010 - 95 (Rozsudek, 06.04.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs106201095-rozsudek--qvahnxu61nqc"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_108_2010_-_75.md": {
+      "sha256": "dfbcf845a6a6f579db4ae71465c10b6bba7aa2e6dee61ce8a12efaa7f19e401d",
+      "display_name": "NSS 1 Afs 108/2010 - 75 (Rozsudek, 27.01.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs108201075-rozsudek--dzfu212a8s0h"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_10_2011_-_183.md": {
+      "sha256": "35d4c38d529840162be33727da9ac28904a1ddb768c19d0eed0b2e9a97cab438",
+      "display_name": "NSS 1 Afs 10/2011 - 183 (Rozsudek, 02.03.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs102011183-rozsudek--e43hvcl499b6"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_11_2011_-_190.md": {
+      "sha256": "efb3612f1801584d92e8e14e79ae1a43535cfa8939b76b066426d5594ed3b963",
+      "display_name": "NSS 1 Afs 11/2011 - 190 (Rozsudek, 02.03.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs112011190-rozsudek--99ct45kwstbm"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_12_2011_-_195.md": {
+      "sha256": "8e9c5b4614d9c2bcfa4cd33543e308cd8cc3dd3341eb85be3c982c668018db8f",
+      "display_name": "NSS 1 Afs 12/2011 - 195 (Rozsudek, 02.03.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs122011195-rozsudek--qdmfd88z0ibv"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_13_2011_-_204.md": {
+      "sha256": "a68a2fcef932d29de86491412fc57adda5d773f4f405dfef2b3913fa3d83aa25",
+      "display_name": "NSS 1 Afs 13/2011 - 204 (Rozsudek, 02.03.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs132011204-rozsudek--4t0b91pdy0q3"
+    },
+    "judikatura/Afs/2011/NSS_1_Afs_14_2011_-_62.md": {
+      "sha256": "d48a6977523ed97c0d875005388200b2f0f6c313be24b1d4505626f390e4d459",
+      "display_name": "NSS 1 Afs 14/2011 - 62 (Rozsudek, 30.03.2011)",
+      "document_name": "fileSearchStores/nssdatabase-5mzegkelg89j/documents/nss-1afs14201162-rozsudek-3-kqbdehcrj2l9"
     }
   }
 }
